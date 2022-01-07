@@ -33,7 +33,7 @@ namespace Project1_App.App
             while (true)
             {
                 Console.Write(await storeLocation.GetStoreLocation());
-                if(int.TryParse(Console.ReadLine(), out num))
+                if (int.TryParse(Console.ReadLine(), out num))
                 {
                     if (0 < num && num < 4)
                     {
@@ -54,12 +54,12 @@ namespace Project1_App.App
         public async Task<bool> getUserInput(Program myProgram, Invoice invoice, ItemDetailsInfo itemDetailsInfo, string? input)
         {
             int userInput = 0;
-            if(int.TryParse(input, out userInput))
+            if (int.TryParse(input, out userInput))
             {
-                
+
                 if (0 < userInput && userInput < 6)
                 {
-                    if(userInput < 4)
+                    if (userInput < 4)
                     {
                         //Console.WriteLine("------------------------------");
                         if (userInput == 1)
@@ -67,7 +67,7 @@ namespace Project1_App.App
                             Console.Write("\nYour Invoices");
                             Console.Write(await invoice.DisplayInvoicesByCustomerId(myProgram.CustomerId.ToString()));
                         }
-                        else if(userInput == 2)
+                        else if (userInput == 2)
                         {
                             Console.Write("\nItem's Detail:");
                             Console.Write(await itemDetailsInfo.DisplayItems());
@@ -80,7 +80,7 @@ namespace Project1_App.App
                         //Console.WriteLine("------------------------------");
                         return true;
                     }
-                    else if(userInput == 4)
+                    else if (userInput == 4)
                     {
                         myProgram.myMode = Program.Mode.SetOrder;
                         return false;
@@ -96,7 +96,7 @@ namespace Project1_App.App
                 {
                     Console.WriteLine("Your input is invalid: Value is not matching any number from menu. Please try again");
                     return true;
-                } 
+                }
             }
             else
             {
@@ -106,3 +106,4 @@ namespace Project1_App.App
         }
     }
 }
+

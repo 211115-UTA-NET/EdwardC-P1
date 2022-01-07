@@ -32,9 +32,9 @@ namespace Project1_App.App
         {
             int userInput;
 
-            if(int.TryParse(input, out userInput))
+            if (int.TryParse(input, out userInput))
             {
-                switch(userInput)
+                switch (userInput)
                 {
                     case 1:
                         myProgram.myMode = Program.Mode.NewCustomer;
@@ -89,9 +89,9 @@ namespace Project1_App.App
                     IsManager = Convert.ToBoolean(result![1]);
                     myProgram.CustomerId = Convert.ToInt32(result[0]);
                 }
-                if(matching)
+                if (matching)
                 {
-                    if(IsManager)
+                    if (IsManager)
                     {
                         myProgram.myMode = Program.Mode.ManagerRequest;
                         break;

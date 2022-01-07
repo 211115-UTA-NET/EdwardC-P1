@@ -9,7 +9,7 @@ namespace Project1_App.App
 {
     public class ManagerRequest
     {
-        public async Task EnterManagerScreen(Program myProgram, Customer customer, StoreLocation storeLocation, 
+        public async Task EnterManagerScreen(Program myProgram, Customer customer, StoreLocation storeLocation,
                                              StoreInventory storeInventory, Invoice invoice)
         {
             bool TryAgain = true;
@@ -25,9 +25,9 @@ namespace Project1_App.App
             while (TryAgain);
         }
 
-        public async Task<bool> GetUserInput(Program myProgram, StoreLocation storeLocation, StoreInventory storeInventory, 
+        public async Task<bool> GetUserInput(Program myProgram, StoreLocation storeLocation, StoreInventory storeInventory,
                                              Invoice invoice, Customer customer, string? input)
-        { 
+        {
             int userInput = 0;
             if (int.TryParse(input, out userInput))
             {
@@ -129,9 +129,9 @@ namespace Project1_App.App
         public async Task<bool> GetStoreInvoices(Invoice invoice, string? input)
         {
             int userInput = 0;
-            if(int.TryParse(input, out userInput))
+            if (int.TryParse(input, out userInput))
             {
-                switch(userInput)
+                switch (userInput)
                 {
                     case 1:
                         Console.WriteLine(await invoice.DisplayInvoicesByStoreId("1"));
@@ -170,7 +170,7 @@ namespace Project1_App.App
                 Console.WriteLine("\nSearch Customer:\nEnter the number followed by the menu: " +
                                   "\n1. First Name\n2. Last Name");
                 input = Console.ReadLine();
-                if(int.TryParse(input, out num))
+                if (int.TryParse(input, out num))
                     name = GetName();
                 TryAgain = await FindCustomer(customer, input, name);
             }
@@ -187,9 +187,9 @@ namespace Project1_App.App
         public async Task<bool> FindCustomer(Customer customer, string? input, string? name)
         {
             int userInput = 0;
-            if(int.TryParse(input, out userInput))
+            if (int.TryParse(input, out userInput))
             {
-                switch(userInput)
+                switch (userInput)
                 {
                     case 1:
                         Console.WriteLine(await customer.FindCustomerName(input, name));
@@ -210,3 +210,4 @@ namespace Project1_App.App
         }
     }
 }
+

@@ -18,7 +18,8 @@ namespace Project1_App.App
 
             Program program = new();
             program.myMode = Mode.Login;
-            Uri myServer = new(await File.ReadAllTextAsync("C:/Users/rootb/Revature/Database_File/LocalHost.txt"));
+            //Uri myServer = new(await File.ReadAllTextAsync("C:/Users/rootb/Revature/Database_File/LocalHost2.txt"));
+            Uri myServer = new("https://211115bikeshop.azurewebsites.net");
 
             // Call Class 
             Login myLogin = new();
@@ -36,7 +37,7 @@ namespace Project1_App.App
 
             while (programRun)
             {
-                
+
                 switch (program.myMode)
                 {
                     case Mode.Login:
@@ -48,28 +49,28 @@ namespace Project1_App.App
                         break;
                     case Mode.NewCustomer:
                         Console.WriteLine("\nNew Customer's Sign up");
-                        Console.WriteLine(  "----------------------");
+                        Console.WriteLine("----------------------");
                         newCustomer.test();
                         programRun = false;
                         break;
                     case Mode.CustomerRequest:
                         Console.WriteLine("\nCustomer Request");
-                        Console.WriteLine(  "----------------");
+                        Console.WriteLine("----------------");
                         await customerRequest.EnterCustomerScreen(program, storeLocation, invoice, itemDetailsInfo);
                         break;
                     case Mode.ManagerRequest:
                         Console.WriteLine("\nManager Request");
-                        Console.WriteLine(  "---------------");
+                        Console.WriteLine("---------------");
                         await managerRequest.EnterManagerScreen(program, customer, storeLocation, storeInventory, invoice);
                         break;
                     case Mode.SetOrder:
                         Console.WriteLine("\nSet Order");
-                        Console.WriteLine(  "---------");
+                        Console.WriteLine("---------");
                         programRun = false;
                         break;
                     case Mode.Logout:
                         Console.WriteLine("\nLog out");
-                        Console.WriteLine(  "-------");
+                        Console.WriteLine("-------");
                         myLogout.EnterLogoutScreen(program);
                         programRun = false;
                         break;
@@ -79,7 +80,7 @@ namespace Project1_App.App
                         break;
                 }
             }
-            
+
         }
     }
 }

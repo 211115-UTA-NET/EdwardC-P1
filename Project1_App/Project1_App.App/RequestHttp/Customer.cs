@@ -59,7 +59,7 @@ namespace Project1_App.App.RequestHttp
             }
 
             var getLogin = await response.Content.ReadFromJsonAsync<List<string>>();
-            if(getLogin == null)
+            if (getLogin == null)
             {
                 throw new UnexpectedServerBehaviorException();
             }
@@ -126,3 +126,4 @@ namespace Project1_App.App.RequestHttp
         }
     }
 }
+
