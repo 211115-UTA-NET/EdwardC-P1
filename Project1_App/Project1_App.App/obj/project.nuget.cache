@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "94l3+6GYQb70hE4FDG1ZXKLVggP88o0/9N6nM3yvljHTvFcqKuBi3S8Fr4Ny8qkWRqLvHzjYSibUl/u093AKXA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\rootb\\Revature\\EdwardC-P1\\Project1_App\\Project1_App.App\\Project1_App.App.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\rootb\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
+    "C:\\Users\\rootb\\.nuget\\packages\\microsoft.extensions.primitives\\2.2.0\\microsoft.extensions.primitives.2.2.0.nupkg.sha512",
+    "C:\\Users\\rootb\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
+    "C:\\Users\\rootb\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
+    "C:\\Users\\rootb\\.nuget\\packages\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Users\\rootb\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
+    "C:\\Users\\rootb\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
