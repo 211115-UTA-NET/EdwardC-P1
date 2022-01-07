@@ -26,7 +26,7 @@ namespace Project1_Api.DataStorage
             using (SqlCommand cmd = new(cmdText, connection))
             {
                 using SqlDataReader reader = cmd.ExecuteReader();
-                while(await reader.ReadAsync())
+                while (await reader.ReadAsync())
                 {
                     string StoreId = reader.GetInt32(0).ToString();
                     string Location = reader.GetString(1);
@@ -39,3 +39,4 @@ namespace Project1_Api.DataStorage
         }
     }
 }
+

@@ -28,7 +28,7 @@ namespace Project1_Api.DataStorage
                 cmd.Parameters.AddWithValue("@username", username);
                 cmd.Parameters.AddWithValue("@password", password);
                 using SqlDataReader reader = cmd.ExecuteReader();
-                while(await reader.ReadAsync())
+                while (await reader.ReadAsync())
                 {
                     result.Add(reader.GetInt32(0).ToString());
                     result.Add(reader.GetBoolean(3).ToString());
@@ -38,3 +38,4 @@ namespace Project1_Api.DataStorage
         }
     }
 }
+

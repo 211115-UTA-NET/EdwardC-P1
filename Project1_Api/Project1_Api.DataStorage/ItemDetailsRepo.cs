@@ -31,7 +31,7 @@ namespace Project1_Api.DataStorage
                     string Name = reader.GetString(0);
                     string Detail = reader.GetString(1);
                     decimal Price = reader.GetDecimal(2);
-                    string fullSentence= $"Name: {Name}\nDetail: {Detail}\nPrice: ${Price}";
+                    string fullSentence = $"Name: {Name}\nDetail: {Detail}\nPrice: ${Price}";
                     result.Add(fullSentence);
                 }
             }

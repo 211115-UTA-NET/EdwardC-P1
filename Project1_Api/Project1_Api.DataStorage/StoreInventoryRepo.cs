@@ -27,7 +27,7 @@ namespace Project1_Api.DataStorage
             using (SqlCommand cmd = new(cmdText, connection))
             {
                 using SqlDataReader reader = cmd.ExecuteReader();
-                while(await reader.ReadAsync())
+                while (await reader.ReadAsync())
                 {
                     string ItemName = reader.GetString(0);
                     string ItemQuantity = reader.GetInt32(1).ToString();
@@ -36,7 +36,7 @@ namespace Project1_Api.DataStorage
                     result.Add(FullSentence);
                 }
             }
-            return result;  
+            return result;
         }
 
         public async Task<List<string>> GetStoreInventoryById(string id)
@@ -66,3 +66,4 @@ namespace Project1_Api.DataStorage
         }
     }
 }
+

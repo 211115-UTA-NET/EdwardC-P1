@@ -1,7 +1,5 @@
 using Project1_Api.DataStorage;
 
-//string connectionString = await File.ReadAllTextAsync("C:/Users/rootb/Revature/Database_File/ConnectBikeShop.txt");
-
 var builder = WebApplication.CreateBuilder(args);
 
 string connectionString = builder.Configuration.GetConnectionString("BikeShop-DB-Connection");
@@ -13,12 +11,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<ILoginRepo>(sp => new LoginRepo(connectionString));
-builder.Services.AddSingleton<IStoreLocationRepo>(sp => new StoreLocationRepo(connectionString));
-builder.Services.AddSingleton<IStoreInventoryRepo>(sp => new StoreInventoryRepo(connectionString));
-builder.Services.AddSingleton<IInvoiceRepo>(sp => new InvoiceRepo(connectionString));
 builder.Services.AddSingleton<ICustomerRepo>(sp => new CustomerRepo(connectionString));
+builder.Services.AddSingleton<IInvoiceRepo>(sp => new InvoiceRepo(connectionString));
 builder.Services.AddSingleton<IItemDetailsRepo>(sp => new ItemDetailsRepo(connectionString));
+builder.Services.AddSingleton<ILoginRepo>(sp => new LoginRepo(connectionString));
+builder.Services.AddSingleton<IStoreInventoryRepo>(sp => new StoreInventoryRepo(connectionString));
+builder.Services.AddSingleton<IStoreLocationRepo>(sp => new StoreLocationRepo(connectionString));
 
 var app = builder.Build();
 
