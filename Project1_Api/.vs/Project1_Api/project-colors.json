@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "11f1fb35-c8aa-4367-a42d-caf3a379e7d8": {
+      "ProjectGuid": "11f1fb35-c8aa-4367-a42d-caf3a379e7d8",
+      "DisplayName": "Project1_Api.Api",
+      "ColorIndex": 0
+    },
+    "a3711782-53f2-49e9-929a-7772ab9ec0b6": {
+      "ProjectGuid": "a3711782-53f2-49e9-929a-7772ab9ec0b6",
+      "DisplayName": "Project1_Api.DataStorage",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
