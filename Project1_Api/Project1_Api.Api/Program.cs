@@ -1,8 +1,10 @@
 using Project1_Api.DataStorage;
 
-string connectionString = await File.ReadAllTextAsync("C:/Users/rootb/Revature/Database_File/ConnectBikeShop.txt");
+//string connectionString = await File.ReadAllTextAsync("C:/Users/rootb/Revature/Database_File/ConnectBikeShop.txt");
 
 var builder = WebApplication.CreateBuilder(args);
+
+string connectionString = builder.Configuration.GetConnectionString("BikeShop-DB-Connection");
 
 // Add services to the container.
 
