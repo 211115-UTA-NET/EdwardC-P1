@@ -40,7 +40,7 @@ jobs:
         shell: powershell
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
-          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner --version 5.4.0
           
       - name: Setup .NET 6
         uses: actions/setup-dotnet@v1
