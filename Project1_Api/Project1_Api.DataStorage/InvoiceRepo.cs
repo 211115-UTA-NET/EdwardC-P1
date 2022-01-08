@@ -17,7 +17,6 @@ namespace Project1_Api.DataStorage
 
         public async Task<List<string>> GetAllInvoice()
         {
-            List<string> result = new();
             using SqlConnection connection = new(_connectionString);
             await connection.OpenAsync();
 
@@ -31,14 +30,14 @@ namespace Project1_Api.DataStorage
             using (SqlCommand cmd = new(cmdText, connection))
             {
                 using SqlDataReader reader = cmd.ExecuteReader();
-                result = await GetInformation(reader);
+                List<string> result = await GetInformation(reader);
+                return result;
             }
-            return result;
+            
         }
 
         public async Task<List<string>> GetInvoiceByStoreId(string num)
         {
-            List<string> result = new();
             using SqlConnection connection = new(_connectionString);
             await connection.OpenAsync();
 
@@ -54,14 +53,14 @@ namespace Project1_Api.DataStorage
             {
                 cmd.Parameters.AddWithValue("@storeId", num);
                 using SqlDataReader reader = cmd.ExecuteReader();
-                result = await GetInformation(reader);
+                List<string> result = await GetInformation(reader);
+                return result;
             }
-            return result;
+            
         }
 
         public async Task<List<string>> GetInvoiceByCustomerId(string num)
         {
-            List<string> result = new();
             using SqlConnection connection = new(_connectionString);
             await connection.OpenAsync();
 
@@ -77,12 +76,13 @@ namespace Project1_Api.DataStorage
             {
                 cmd.Parameters.AddWithValue("@customerId", num);
                 using SqlDataReader reader = cmd.ExecuteReader();
-                result = await GetInformation(reader);
+                List<string> result = await GetInformation(reader);
+                return result;
             }
-            return result;
+            
         }
 
-        public async Task<List<string>> GetInformation(SqlDataReader reader)
+        public static async Task<List<string>> GetInformation(SqlDataReader reader)
         {
             List<string> result = new();
             while (await reader.ReadAsync())
