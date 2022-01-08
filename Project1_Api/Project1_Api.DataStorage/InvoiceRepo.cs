@@ -31,17 +31,7 @@ namespace Project1_Api.DataStorage
             using (SqlCommand cmd = new(cmdText, connection))
             {
                 using SqlDataReader reader = cmd.ExecuteReader();
-                while (await reader.ReadAsync())
-                {
-                    string Id = reader.GetInt32(0).ToString();
-                    string History = reader.GetDateTime(1).ToString();
-                    string ItemName = reader.GetString(2);
-                    string Quantity = reader.GetInt32(3).ToString();
-                    string Price = reader.GetDecimal(4).ToString();
-                    string Location = reader.GetString(5);
-                    string FullSentence = $"InvoiceId: {Id}\nDate: {History}\nItem Name: {ItemName}\nQuantity: {Quantity}\nTotal Price: {Price}\nLocation: {Location}";
-                    result.Add(FullSentence);
-                }
+                result = await GetInformation(reader);
             }
             return result;
         }
@@ -64,17 +54,7 @@ namespace Project1_Api.DataStorage
             {
                 cmd.Parameters.AddWithValue("@storeId", num);
                 using SqlDataReader reader = cmd.ExecuteReader();
-                while (await reader.ReadAsync())
-                {
-                    string Id = reader.GetInt32(0).ToString();
-                    string History = reader.GetDateTime(1).ToString();
-                    string ItemName = reader.GetString(2);
-                    string Quantity = reader.GetInt32(3).ToString();
-                    string Price = reader.GetDecimal(4).ToString();
-                    string Location = reader.GetString(5);
-                    string FullSentence = $"InvoiceId: {Id}\nDate: {History}\nItem Name: {ItemName}\nQuantity: {Quantity}\nTotal Price: {Price}\nLocation: {Location}";
-                    result.Add(FullSentence);
-                }
+                result = await GetInformation(reader);
             }
             return result;
         }
@@ -97,17 +77,24 @@ namespace Project1_Api.DataStorage
             {
                 cmd.Parameters.AddWithValue("@customerId", num);
                 using SqlDataReader reader = cmd.ExecuteReader();
-                while (await reader.ReadAsync())
-                {
-                    string Id = reader.GetInt32(0).ToString();
-                    string History = reader.GetDateTime(1).ToString();
-                    string ItemName = reader.GetString(2);
-                    string Quantity = reader.GetInt32(3).ToString();
-                    string Price = reader.GetDecimal(4).ToString();
-                    string Location = reader.GetString(5);
-                    string FullSentence = $"InvoiceId: {Id}\nDate: {History}\nItem Name: {ItemName}\nQuantity: {Quantity}\nTotal Price: {Price}\nLocation: {Location}";
-                    result.Add(FullSentence);
-                }
+                result = await GetInformation(reader);
+            }
+            return result;
+        }
+
+        public async Task<List<string>> GetInformation(SqlDataReader reader)
+        {
+            List<string> result = new();
+            while (await reader.ReadAsync())
+            {
+                string Id = reader.GetInt32(0).ToString();
+                string History = reader.GetDateTime(1).ToString();
+                string ItemName = reader.GetString(2);
+                string Quantity = reader.GetInt32(3).ToString();
+                string Price = reader.GetDecimal(4).ToString();
+                string Location = reader.GetString(5);
+                string FullSentence = $"InvoiceId: {Id}\nDate: {History}\nItem Name: {ItemName}\nQuantity: {Quantity}\nTotal Price: {Price}\nLocation: {Location}";
+                result.Add(FullSentence);
             }
             return result;
         }
