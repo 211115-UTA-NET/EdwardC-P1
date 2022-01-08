@@ -79,28 +79,11 @@ namespace Project1_App.App
                 inputs.Add(Console.ReadLine());
 
                 List<string> result = await customer.SearchLoginInfo(inputs!);
-                if (result == null || result.Count == 0)
-                {
-                    matching = false;
-                }
-                else
-                {
-                    matching = true;
-                    IsManager = Convert.ToBoolean(result![1]);
-                    myProgram.CustomerId = Convert.ToInt32(result[0]);
-                }
+                matching = GetMatching(myProgram, result, ref IsManager);
                 if (matching)
                 {
-                    if (IsManager)
-                    {
-                        myProgram.myMode = Program.Mode.ManagerRequest;
-                        break;
-                    }
-                    else
-                    {
-                        myProgram.myMode = Program.Mode.CustomerRequest;
-                        break;
-                    }
+                    myProgram.myMode = ChangeMode(myProgram, IsManager);
+                    break;
                 }
                 else
                 {
@@ -108,6 +91,32 @@ namespace Project1_App.App
                 }
             }
             while (true);
+        }
+
+        public bool GetMatching(Program myProgram, List<string> result, ref bool IsManager)
+        {
+            if (result == null || result.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                IsManager = Convert.ToBoolean(result![1]);
+                myProgram.CustomerId = Convert.ToInt32(result[0]);
+                return true;
+            }
+        }
+
+        public Program.Mode ChangeMode(Program myProgram, bool IsManager)
+        {
+            if (IsManager)
+            {
+                return Program.Mode.ManagerRequest;
+            }
+            else
+            {
+                return Program.Mode.CustomerRequest;
+            }
         }
     }
 }

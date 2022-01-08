@@ -19,7 +19,8 @@ namespace Project1_App.App
             Program program = new();
             program.myMode = Mode.Login;
             //Uri myServer = new(await File.ReadAllTextAsync("C:/Users/rootb/Revature/Database_File/LocalHost2.txt"));
-            Uri myServer = new("https://211115bikeshop.azurewebsites.net");
+            //Uri myServer = new("https://211115bikeshop.azurewebsites.net");
+            Uri myServer = new(await File.ReadAllTextAsync("C:/Users/rootb/Revature/Database_File/LocalHostP1.txt"));
 
             // Call Class 
             Login myLogin = new();
