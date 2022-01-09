@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Project1_App.App.Exceptions
 {
     [Serializable]
-    internal class UnexpectedServerBehaviorException : Exception
+    public class UnexpectedServerBehaviorException : Exception
     {
         public UnexpectedServerBehaviorException()
         {

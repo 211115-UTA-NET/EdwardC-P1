@@ -61,7 +61,6 @@ namespace Project1_App.App
         {
             bool matching = false;
             bool IsManager = true;
-            List<string> customerInfo = new();
 
             do
             {
@@ -93,7 +92,7 @@ namespace Project1_App.App
             while (true);
         }
 
-        public bool GetMatching(Program myProgram, List<string> result, ref bool IsManager)
+        public static bool GetMatching(Program myProgram, List<string> result, ref bool IsManager)
         {
             if (result == null || result.Count == 0)
             {
@@ -107,7 +106,7 @@ namespace Project1_App.App
             }
         }
 
-        public Program.Mode ChangeMode(Program myProgram, bool IsManager)
+        public static Program.Mode ChangeMode(Program myProgram, bool IsManager)
         {
             if (IsManager)
             {

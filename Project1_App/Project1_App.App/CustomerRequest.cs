@@ -25,7 +25,7 @@ namespace Project1_App.App
             while (TryAgain);
         }
 
-        public async Task ChooseStore(Program myProgram, StoreLocation storeLocation)
+        public static async Task ChooseStore(Program myProgram, StoreLocation storeLocation)
         {
             int num = 0;
             Console.WriteLine("Pick a location followed: ");
@@ -51,7 +51,7 @@ namespace Project1_App.App
 
         }
 
-        public async Task<bool> getUserInput(Program myProgram, Invoice invoice, ItemDetailsInfo itemDetailsInfo, string? input)
+        public static async Task<bool> getUserInput(Program myProgram, Invoice invoice, ItemDetailsInfo itemDetailsInfo, string? input)
         {
             int userInput = 0;
             if (int.TryParse(input, out userInput))
@@ -61,7 +61,6 @@ namespace Project1_App.App
                 {
                     if (userInput < 4)
                     {
-                        //Console.WriteLine("------------------------------");
                         if (userInput == 1)
                         {
                             Console.Write("\nYour Invoices");
@@ -77,7 +76,6 @@ namespace Project1_App.App
                             Console.Write("\nStore's Invoices:");
                             Console.Write(await invoice.DisplayInvoicesByStoreId(myProgram.StoreId.ToString()));
                         }
-                        //Console.WriteLine("------------------------------");
                         return true;
                     }
                     else if (userInput == 4)
