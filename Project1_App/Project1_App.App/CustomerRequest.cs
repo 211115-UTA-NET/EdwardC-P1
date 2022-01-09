@@ -50,51 +50,37 @@ namespace Project1_App.App
             }
 
         }
-
         public static async Task<bool> getUserInput(Program myProgram, Invoice invoice, ItemDetailsInfo itemDetailsInfo, string? input)
         {
             int userInput = 0;
             if (int.TryParse(input, out userInput))
             {
-
-                if (0 < userInput && userInput < 6)
+                switch (userInput)
                 {
-                    if (userInput < 4)
-                    {
-                        if (userInput == 1)
-                        {
-                            Console.Write("\nYour Invoices");
-                            Console.Write(await invoice.DisplayInvoicesByCustomerId(myProgram.CustomerId.ToString()));
-                        }
-                        else if (userInput == 2)
-                        {
-                            Console.Write("\nItem's Detail:");
-                            Console.Write(await itemDetailsInfo.DisplayItems());
-                        }
-                        else
-                        {
-                            Console.Write("\nStore's Invoices:");
-                            Console.Write(await invoice.DisplayInvoicesByStoreId(myProgram.StoreId.ToString()));
-                        }
-                        return true;
-                    }
-                    else if (userInput == 4)
-                    {
+                    case 1:
+                        Console.Write("\nYour Invoices");
+                        Console.Write(await invoice.DisplayInvoicesByCustomerId(myProgram.CustomerId.ToString()));
+                        break;
+                    case 2:
+                        Console.Write("\nItem's Detail:");
+                        Console.Write(await itemDetailsInfo.DisplayItems());
+                        break;
+                    case 3:
+                        Console.Write("\nStore's Invoices:");
+                        Console.Write(await invoice.DisplayInvoicesByStoreId(myProgram.StoreId.ToString()));
+                        break;
+                    case 4:
                         myProgram.myMode = Program.Mode.SetOrder;
                         return false;
-                    }
-                    else
-                    {
+                    case 5:
                         myProgram.myMode = Program.Mode.Login;
                         Console.WriteLine();
                         return false;
-                    }
+                    default:
+                        Console.WriteLine("Your input is invalid: Value is not matching any number from menu. Please try again");
+                        break;
                 }
-                else
-                {
-                    Console.WriteLine("Your input is invalid: Value is not matching any number from menu. Please try again");
-                    return true;
-                }
+                return true;
             }
             else
             {

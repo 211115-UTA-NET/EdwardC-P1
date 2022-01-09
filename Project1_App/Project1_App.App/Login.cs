@@ -28,7 +28,7 @@ namespace Project1_App.App
             while (TryAgain);
         }
 
-        public async Task<bool> GetUserInput(Program myProgram, Customer customer, string? input)
+        public static async Task<bool> GetUserInput(Program myProgram, Customer customer, string? input)
         {
             int userInput;
 
