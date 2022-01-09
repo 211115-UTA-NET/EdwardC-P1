@@ -12,7 +12,6 @@ namespace Project1_App.App.RequestHttp
 {
     public class Invoice
     {
-        public static readonly HttpClient httpClient = new();
         private static Uri? ServerUri;
         private static GetStringInfo getStringInfo = null!;
         public Invoice(Uri serverUri)
@@ -26,7 +25,6 @@ namespace Project1_App.App.RequestHttp
 
         public async Task<string> DisplayInvoicesByStoreId(string num)
         {
-            //SetUp();
             List<string> invoices = new();
             try
             {
@@ -44,13 +42,17 @@ namespace Project1_App.App.RequestHttp
             Dictionary<string, string> query = new() { ["storeId"] = num! };
             string requestUri = QueryHelpers.AddQueryString("/api/Invoices/StoreId", query);
 
-            var Invoices = await getStringInfo.SendRequestHttp(requestUri);
-            return Invoices;
+            var response = await getStringInfo.SendRequestHttp(requestUri);
+            var results = await response.Content.ReadFromJsonAsync<List<string>>();
+            if (results == null)
+            {
+                throw new UnexpectedServerBehaviorException();
+            }
+            return results;
         }
 
         public async Task<string> DisplayAllInvoices()
         {
-            //SetUp();
             List<string> invoices = new();
             try
             {
@@ -68,13 +70,17 @@ namespace Project1_App.App.RequestHttp
             Dictionary<string, string> query = new();
             string requestUri = QueryHelpers.AddQueryString("/api/Invoices", query);
 
-            var Invoices = await getStringInfo.SendRequestHttp(requestUri);
-            return Invoices;
+            var response = await getStringInfo.SendRequestHttp(requestUri);
+            var results = await response.Content.ReadFromJsonAsync<List<string>>();
+            if (results == null)
+            {
+                throw new UnexpectedServerBehaviorException();
+            }
+            return results;
         }
 
         public async Task<string> DisplayInvoicesByCustomerId(string num)
         {
-            //SetUp();
             List<string> invoices = new();
             try
             {
@@ -92,8 +98,13 @@ namespace Project1_App.App.RequestHttp
             Dictionary<string, string> query = new() { ["customerId"] = num! };
             string requestUri = QueryHelpers.AddQueryString("/api/Invoices/CustomerId", query);
 
-            var Invoices = await getStringInfo.SendRequestHttp(requestUri);
-            return Invoices;
+            var response = await getStringInfo.SendRequestHttp(requestUri);
+            var results = await response.Content.ReadFromJsonAsync<List<string>>();
+            if (results == null)
+            {
+                throw new UnexpectedServerBehaviorException();
+            }
+            return results;
         }
     }
 }

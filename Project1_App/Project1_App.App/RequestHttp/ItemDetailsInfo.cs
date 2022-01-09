@@ -27,7 +27,6 @@ namespace Project1_App.App.RequestHttp
 
         public async Task<string> DisplayItems()
         {
-            //SetUp();
             List<string> itemDetails = new();
             try
             {
@@ -48,9 +47,14 @@ namespace Project1_App.App.RequestHttp
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUri);
             request.Headers.Accept.Add(new(MediaTypeNames.Application.Json));
-            
-            var itemDetails = await getStringInfo.SendRequestHttp(requestUri);
-            return itemDetails;
+
+            var response = await getStringInfo.SendRequestHttp(requestUri);
+            var results = await response.Content.ReadFromJsonAsync<List<string>>();
+            if (results == null)
+            {
+                throw new UnexpectedServerBehaviorException();
+            }
+            return results;
         }
     }
 }

@@ -27,7 +27,6 @@ namespace Project1_App.App.RequestHttp
 
         public async Task<string> DisplayStoreInventorysById(string num)
         {
-            SetUp();
             List<string> storeInventorys = new();
             try
             {
@@ -46,13 +45,17 @@ namespace Project1_App.App.RequestHttp
             Dictionary<string, string> query = new() { ["Id"] = num! };
             string requestUri = QueryHelpers.AddQueryString("/api/StoreInventorys/Id", query);
 
-            var storeInventory = await getStringInfo.SendRequestHttp(requestUri);
-            return storeInventory;
+            var response = await getStringInfo.SendRequestHttp(requestUri);
+            var results = await response.Content.ReadFromJsonAsync<List<string>>();
+            if (results == null)
+            {
+                throw new UnexpectedServerBehaviorException();
+            }
+            return results;
         }
 
         public async Task<string> DisplayAllStoreInventorys()
         {
-            //SetUp();
             List<string> storeInventorys = new();
             try
             {
@@ -70,8 +73,13 @@ namespace Project1_App.App.RequestHttp
             Dictionary<string, string> query = new();
             string requestUri = QueryHelpers.AddQueryString("/api/StoreInventorys", query);
 
-            var storeInventory = await getStringInfo.SendRequestHttp(requestUri);
-            return storeInventory;
+            var response = await getStringInfo.SendRequestHttp(requestUri);
+            var results = await response.Content.ReadFromJsonAsync<List<string>>();
+            if (results == null)
+            {
+                throw new UnexpectedServerBehaviorException();
+            }
+            return results;
         }
     }
 }

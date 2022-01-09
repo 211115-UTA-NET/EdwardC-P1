@@ -37,6 +37,7 @@ namespace Project1_App.App
             ItemDetailsInfo itemDetailsInfo = new(myServer);
 
             //Set for getStringInfo
+            Customer.SetUp();
             StoreLocation.SetUp();
             StoreInventory.SetUp();
             Invoice.SetUp();

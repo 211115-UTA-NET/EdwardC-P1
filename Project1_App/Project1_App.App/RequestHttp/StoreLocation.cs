@@ -27,7 +27,6 @@ namespace Project1_App.App.RequestHttp
         }
         public async Task<string> GetStoreLocation()
         {
-            //SetUp();
             List<string> storeLocations = new();
             try
             {
@@ -39,14 +38,6 @@ namespace Project1_App.App.RequestHttp
             }
 
             return getStringInfo.GetSummary(storeLocations);
-
-            //var summary = new StringBuilder();
-            //for (int i = 0; i < storeLocations.Count; i++)
-            //{
-            //    summary.AppendLine($"{storeLocations[i]}");
-            //}
-
-            //return summary.ToString();
         }
 
         public static async Task<List<string>> GetStoreLocations()
@@ -54,8 +45,13 @@ namespace Project1_App.App.RequestHttp
             Dictionary<string, string> query = new();
             string requestUri = QueryHelpers.AddQueryString("/api/StoreLocations", query);
 
-            var storeLocations = await getStringInfo.SendRequestHttp(requestUri);
-            return storeLocations;
+            var response = await getStringInfo.SendRequestHttp(requestUri);
+            var results = await response.Content.ReadFromJsonAsync<List<string>>();
+            if (results == null)
+            {
+                throw new UnexpectedServerBehaviorException();
+            }
+            return results;
         }
     }
 }

@@ -12,11 +12,16 @@ namespace Project1_App.App.RequestHttp
 {
     public class Customer
     {
-        public static readonly HttpClient httpClient = new();
+        private static Uri? ServerUri;
+        private static GetStringInfo getStringInfo = null!;
 
         public Customer(Uri serverUri)
         {
-            httpClient.BaseAddress = serverUri;
+            ServerUri = serverUri;
+        }
+        public static void SetUp()
+        {
+            getStringInfo = new(ServerUri!);
         }
 
         public async Task<List<string>> SearchLoginInfo(List<string> inputs)
@@ -39,33 +44,13 @@ namespace Project1_App.App.RequestHttp
             Dictionary<string, string> query = new() { ["Username"] = inputs[0]!.ToString(), ["Password"] = inputs[1]!.ToString() };
             string requestUri = QueryHelpers.AddQueryString("/api/Logins", query);
 
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUri);
-            request.Headers.Accept.Add(new(MediaTypeNames.Application.Json));
-
-            HttpResponseMessage response;
-            try
-            {
-                response = await httpClient.SendAsync(request);
-            }
-            catch (HttpRequestException ex)
-            {
-                throw new UnexpectedServerBehaviorException("network error", ex);
-            }
-
-            response.EnsureSuccessStatusCode();
-            if (response.Content.Headers.ContentType?.MediaType != MediaTypeNames.Application.Json)
+            var response = await getStringInfo.SendRequestHttp(requestUri);
+            var results = await response.Content.ReadFromJsonAsync<List<string>>();
+            if (results == null)
             {
                 throw new UnexpectedServerBehaviorException();
             }
-
-            var getLogin = await response.Content.ReadFromJsonAsync<List<string>>();
-            if (getLogin == null)
-            {
-                throw new UnexpectedServerBehaviorException();
-            }
-
-            return getLogin;
-
+            return results;
         }
 
         public async Task<string> FindCustomerName(string? input, string? name)
@@ -100,28 +85,9 @@ namespace Project1_App.App.RequestHttp
         {
             Dictionary<string, string> query = new() { ["Name"] = name! };
             string requestUri = QueryHelpers.AddQueryString("/api/Customers/Name", query);
-
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUri);
-            request.Headers.Accept.Add(new(MediaTypeNames.Application.Json));
-
-            HttpResponseMessage response;
-            try
-            {
-                response = await httpClient.SendAsync(request);
-            }
-            catch (HttpRequestException ex)
-            {
-                throw new UnexpectedServerBehaviorException("network error", ex);
-            }
-
-            response.EnsureSuccessStatusCode();
-            if (response.Content.Headers.ContentType?.MediaType != MediaTypeNames.Application.Json)
-            {
-                throw new UnexpectedServerBehaviorException();
-            }
-
+            
+            var response = await getStringInfo.SendRequestHttp(requestUri);
             var isFound = await response.Content.ReadFromJsonAsync<bool>();
-
             return isFound;
         }
     }

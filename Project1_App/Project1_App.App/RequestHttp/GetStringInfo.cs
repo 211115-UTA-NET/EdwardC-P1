@@ -29,7 +29,7 @@ namespace Project1_App.App.RequestHttp
             summary.AppendLine("------------------");
             return summary.ToString();
         }
-        public async Task<List<string>> SendRequestHttp(string requestUri)
+        public async Task<HttpResponseMessage> SendRequestHttp(string requestUri)
         {
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUri);
             request.Headers.Accept.Add(new(MediaTypeNames.Application.Json));
@@ -49,13 +49,7 @@ namespace Project1_App.App.RequestHttp
             {
                 throw new UnexpectedServerBehaviorException();
             }
-
-            var results = await response.Content.ReadFromJsonAsync<List<string>>();
-            if (results == null)
-            {
-                throw new UnexpectedServerBehaviorException();
-            }
-            return results;
+            return response;
         }
     }
 }
