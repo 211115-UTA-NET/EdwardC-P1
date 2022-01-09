@@ -76,7 +76,7 @@ namespace Project1_App.App
 
         }
 
-        public async Task<bool> GetStoreInventoryById(StoreInventory storeInventory, string? input)
+        public static async Task<bool> GetStoreInventoryById(StoreInventory storeInventory, string? input)
         {
             int userInput = 0;
 
@@ -109,7 +109,7 @@ namespace Project1_App.App
         }
 
         // Invoices
-        public async Task CheckStoreInvoices(StoreLocation storeLocation, Invoice invoice)
+        public static async Task CheckStoreInvoices(StoreLocation storeLocation, Invoice invoice)
         {
             string? input = "";
             bool TryAgain = false;
@@ -126,7 +126,7 @@ namespace Project1_App.App
             while (TryAgain);
         }
 
-        public async Task<bool> GetStoreInvoices(Invoice invoice, string? input)
+        public static async Task<bool> GetStoreInvoices(Invoice invoice, string? input)
         {
             int userInput = 0;
             if (int.TryParse(input, out userInput))
@@ -158,7 +158,7 @@ namespace Project1_App.App
         }
 
         // Customers
-        public async Task SearchCustomerName(Customer customer)
+        public static async Task SearchCustomerName(Customer customer)
         {
             int num = 0;
             string? input = "";
@@ -177,14 +177,14 @@ namespace Project1_App.App
             while (TryAgain);
             Console.WriteLine("\n------------------\n");
         }
-        public string GetName()
+        public static string GetName()
         {
             string? input = "";
             Console.Write("\nEnter the customer's name: ");
             input = Console.ReadLine();
             return input!;
         }
-        public async Task<bool> FindCustomer(Customer customer, string? input, string? name)
+        public static async Task<bool> FindCustomer(Customer customer, string? input, string? name)
         {
             int userInput = 0;
             if (int.TryParse(input, out userInput))

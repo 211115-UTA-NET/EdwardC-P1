@@ -57,7 +57,7 @@ namespace Project1_App.App
             }
         }
 
-        public async Task GetUsernamePassword(Program myProgram, Customer customer)
+        public static async Task GetUsernamePassword(Program myProgram, Customer customer)
         {
             bool matching = false;
             bool IsManager = true;
