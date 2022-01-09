@@ -32,7 +32,7 @@ namespace Project1_App.App.RequestHttp
             }
 
             var summary = new StringBuilder();
-            for (int i = 0; i < storeLocations.Count(); i++)
+            for (int i = 0; i < storeLocations.Count; i++)
             {
                 summary.AppendLine($"{storeLocations[i]}");
             }
@@ -40,7 +40,7 @@ namespace Project1_App.App.RequestHttp
             return summary.ToString();
         }
 
-        public async Task<List<string>> GetStoreLocations()
+        public static async Task<List<string>> GetStoreLocations()
         {
             Dictionary<string, string> query = new();
             string requestUri = QueryHelpers.AddQueryString("/api/StoreLocations", query);

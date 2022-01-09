@@ -34,7 +34,7 @@ namespace Project1_App.App.RequestHttp
             return loginInfo;
         }
 
-        public async Task<List<string>> FoundLoginInfo(List<string> inputs)
+        public static async Task<List<string>> FoundLoginInfo(List<string> inputs)
         {
             Dictionary<string, string> query = new() { ["Username"] = inputs[0]!.ToString(), ["Password"] = inputs[1]!.ToString() };
             string requestUri = QueryHelpers.AddQueryString("/api/Logins", query);
@@ -96,7 +96,7 @@ namespace Project1_App.App.RequestHttp
             }
         }
 
-        public async Task<bool> SearchName(string? name)
+        public static async Task<bool> SearchName(string? name)
         {
             Dictionary<string, string> query = new() { ["Name"] = name! };
             string requestUri = QueryHelpers.AddQueryString("/api/Customers/Name", query);

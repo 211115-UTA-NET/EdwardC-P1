@@ -42,7 +42,7 @@ namespace Project1_App.App.RequestHttp
             return summary.ToString();
         }
 
-        public async Task<List<string>> GetItems()
+        public static async Task<List<string>> GetItems()
         {
             Dictionary<string, string> query = new();
             string requestUri = QueryHelpers.AddQueryString("/api/ItemDetails", query);

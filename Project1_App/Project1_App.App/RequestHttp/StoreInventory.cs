@@ -43,7 +43,7 @@ namespace Project1_App.App.RequestHttp
             return summary.ToString();
         }
 
-        public async Task<List<string>> RetrieveStoreInventoryById(string? num)
+        public static async Task<List<string>> RetrieveStoreInventoryById(string? num)
         {
             Dictionary<string, string> query = new() { ["Id"] = num! };
             string requestUri = QueryHelpers.AddQueryString("/api/StoreInventorys/Id", query);
@@ -94,14 +94,13 @@ namespace Project1_App.App.RequestHttp
             {
                 summary.AppendLine(storeInventory);
                 summary.AppendLine();
-                //summary.AppendLine($"Name: {storeInventory.ItemId}\nQuantity: {storeInventory.Quantity}\nLocation: {storeInventory.Location}");
             }
             summary.AppendLine("------------------");
 
             return summary.ToString();
         }
 
-        public async Task<List<string>> RetrieveAllStoreInventory()
+        public static async Task<List<string>> RetrieveAllStoreInventory()
         {
             Dictionary<string, string> query = new();
             string requestUri = QueryHelpers.AddQueryString("/api/StoreInventorys", query);

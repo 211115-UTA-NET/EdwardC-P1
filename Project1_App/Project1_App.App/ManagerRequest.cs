@@ -58,7 +58,7 @@ namespace Project1_App.App
         }
 
         // Inventory
-        public async Task CheckStoreInventory(StoreLocation storeLocation, StoreInventory storeInventory)
+        public static async Task CheckStoreInventory(StoreLocation storeLocation, StoreInventory storeInventory)
         {
             string? input = "";
             bool TryAgain = false;

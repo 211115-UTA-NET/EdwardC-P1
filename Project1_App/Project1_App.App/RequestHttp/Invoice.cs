@@ -42,7 +42,7 @@ namespace Project1_App.App.RequestHttp
             return summary.ToString();
         }
 
-        public async Task<List<string>> RetrieveInvoicesByStoreId(string num)
+        public static async Task<List<string>> RetrieveInvoicesByStoreId(string num)
         {
             Dictionary<string, string> query = new() { ["storeId"] = num! };
             string requestUri = QueryHelpers.AddQueryString("/api/Invoices/StoreId", query);
@@ -99,7 +99,7 @@ namespace Project1_App.App.RequestHttp
             return summary.ToString();
         }
 
-        public async Task<List<string>> RetrieveAllInvoices()
+        public static async Task<List<string>> RetrieveAllInvoices()
         {
             Dictionary<string, string> query = new();
             string requestUri = QueryHelpers.AddQueryString("/api/Invoices", query);
@@ -155,7 +155,7 @@ namespace Project1_App.App.RequestHttp
             return summary.ToString();
         }
 
-        public async Task<List<string>> RetrieveInvoicesByCustomerId(string num)
+        public static async Task<List<string>> RetrieveInvoicesByCustomerId(string num)
         {
             Dictionary<string, string> query = new() { ["customerId"] = num! };
             string requestUri = QueryHelpers.AddQueryString("/api/Invoices/CustomerId", query);
