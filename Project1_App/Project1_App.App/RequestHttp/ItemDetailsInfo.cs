@@ -12,15 +12,22 @@ namespace Project1_App.App.RequestHttp
 {
     public class ItemDetailsInfo
     {
-        public static readonly HttpClient httpClient = new();
+        private static Uri? ServerUri;
+        private static GetStringInfo getStringInfo = null!;
 
         public ItemDetailsInfo(Uri serverUri)
         {
-            httpClient.BaseAddress = serverUri;
+            ServerUri = serverUri;
+        }
+
+        public static void SetUp()
+        {
+            getStringInfo = new(ServerUri!);
         }
 
         public async Task<string> DisplayItems()
         {
+            SetUp();
             List<string> itemDetails = new();
             try
             {
@@ -30,16 +37,8 @@ namespace Project1_App.App.RequestHttp
             {
                 Console.WriteLine("Fatal error, can't properly connect to server");
             }
-
-            var summary = new StringBuilder();
-            summary.AppendLine("\n------------------\n");
-            foreach (var detail in itemDetails)
-            {
-                summary.AppendLine(detail);
-                summary.AppendLine();
-            }
-            summary.AppendLine("------------------");
-            return summary.ToString();
+            return getStringInfo.GetSummary(itemDetails);
+            
         }
 
         public static async Task<List<string>> GetItems()
@@ -49,30 +48,9 @@ namespace Project1_App.App.RequestHttp
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUri);
             request.Headers.Accept.Add(new(MediaTypeNames.Application.Json));
-
-            HttpResponseMessage response;
-            try
-            {
-                response = await httpClient.SendAsync(request);
-            }
-            catch (HttpRequestException ex)
-            {
-                throw new UnexpectedServerBehaviorException("network error", ex);
-            }
-
-            response.EnsureSuccessStatusCode();
-            if (response.Content.Headers.ContentType?.MediaType != MediaTypeNames.Application.Json)
-            {
-                throw new UnexpectedServerBehaviorException();
-            }
-
-            var getItemDetail = await response.Content.ReadFromJsonAsync<List<string>>();
-            if (getItemDetail == null)
-            {
-                throw new UnexpectedServerBehaviorException();
-            }
-
-            return getItemDetail;
+            
+            var itemDetails = await getStringInfo.SendRequestHttp(requestUri);
+            return itemDetails;
         }
     }
 }
