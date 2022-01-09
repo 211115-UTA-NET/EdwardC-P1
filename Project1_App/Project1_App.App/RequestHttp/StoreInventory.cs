@@ -12,15 +12,22 @@ namespace Project1_App.App.RequestHttp
 {
     public class StoreInventory
     {
-        public static readonly HttpClient httpClient = new();
-
-        public StoreInventory(Uri serverUri)
+        private static Uri? ServerUri;
+        private static GetStringInfo getStringInfo = null!;
+        public StoreInventory(Uri? serverUri)
         {
-            httpClient.BaseAddress = serverUri;
+            
+            ServerUri = serverUri;
+        }
+
+        public static void SetUp()
+        {
+            getStringInfo = new(ServerUri!);
         }
 
         public async Task<string> DisplayStoreInventorysById(string num)
         {
+            SetUp();
             List<string> storeInventorys = new();
             try
             {
@@ -31,20 +38,21 @@ namespace Project1_App.App.RequestHttp
                 Console.WriteLine("Fatal error, can't properly connect to server");
             }
 
-            return GetSummary(storeInventorys);
+            return getStringInfo.GetSummary(storeInventorys);
         }
 
-        public static async Task<List<string>> RetrieveStoreInventoryById(string? num)
+        public async Task<List<string>> RetrieveStoreInventoryById(string? num)
         {
             Dictionary<string, string> query = new() { ["Id"] = num! };
             string requestUri = QueryHelpers.AddQueryString("/api/StoreInventorys/Id", query);
 
-            var storeInventory = await SendRequestHttp(requestUri);
+            var storeInventory = await getStringInfo.SendRequestHttp(requestUri);
             return storeInventory;
         }
 
         public async Task<string> DisplayAllStoreInventorys()
         {
+            SetUp();
             List<string> storeInventorys = new();
             try
             {
@@ -54,57 +62,16 @@ namespace Project1_App.App.RequestHttp
             {
                 Console.WriteLine("Fatal error, can't properly connect to server");
             }
-            return GetSummary(storeInventorys);
+            return getStringInfo.GetSummary(storeInventorys);
         }
 
-        public static async Task<List<string>> RetrieveAllStoreInventory()
+        public async Task<List<string>> RetrieveAllStoreInventory()
         {
             Dictionary<string, string> query = new();
             string requestUri = QueryHelpers.AddQueryString("/api/StoreInventorys", query);
 
-            var storeInventory = await SendRequestHttp(requestUri);
+            var storeInventory = await getStringInfo.SendRequestHttp(requestUri);
             return storeInventory;
-        }
-
-        public static string GetSummary(List<string> results)
-        {
-            var summary = new StringBuilder();
-            summary.AppendLine("\n------------------\n");
-            foreach (var result in results)
-            {
-                summary.AppendLine(result);
-                summary.AppendLine();
-            }
-            summary.AppendLine("------------------");
-            return summary.ToString();
-        }
-        public static async Task<List<string>> SendRequestHttp(string requestUri)
-        {
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUri);
-            request.Headers.Accept.Add(new(MediaTypeNames.Application.Json));
-
-            HttpResponseMessage response;
-            try
-            {
-                response = await httpClient.SendAsync(request);
-            }
-            catch (HttpRequestException ex)
-            {
-                throw new UnexpectedServerBehaviorException("network error", ex);
-            }
-
-            response.EnsureSuccessStatusCode();
-            if (response.Content.Headers.ContentType?.MediaType != MediaTypeNames.Application.Json)
-            {
-                throw new UnexpectedServerBehaviorException();
-            }
-
-            var results = await response.Content.ReadFromJsonAsync<List<string>>();
-            if (results == null)
-            {
-                throw new UnexpectedServerBehaviorException();
-            }
-            return results;
         }
     }
 }
