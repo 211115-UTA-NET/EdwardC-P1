@@ -52,7 +52,7 @@ namespace Project1_App.App.RequestHttp
 
         public async Task<string> DisplayAllStoreInventorys()
         {
-            SetUp();
+            //SetUp();
             List<string> storeInventorys = new();
             try
             {

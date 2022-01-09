@@ -27,7 +27,7 @@ namespace Project1_App.App.RequestHttp
 
         public async Task<string> DisplayItems()
         {
-            SetUp();
+            //SetUp();
             List<string> itemDetails = new();
             try
             {

@@ -14,13 +14,20 @@ namespace Project1_App.App.RequestHttp
     public class StoreLocation
     {
         public static readonly HttpClient httpClient = new();
+        private static Uri? ServerUri;
+        private static GetStringInfo getStringInfo = null!;
 
         public StoreLocation(Uri serverUri)
         {
-            httpClient.BaseAddress = serverUri;
+            ServerUri = serverUri;
+        }
+        public static void SetUp()
+        {
+            getStringInfo = new(ServerUri!);
         }
         public async Task<string> GetStoreLocation()
         {
+            //SetUp();
             List<string> storeLocations = new();
             try
             {
@@ -31,13 +38,15 @@ namespace Project1_App.App.RequestHttp
                 Console.WriteLine("Fatal error, can't properly connect to server");
             }
 
-            var summary = new StringBuilder();
-            for (int i = 0; i < storeLocations.Count; i++)
-            {
-                summary.AppendLine($"{storeLocations[i]}");
-            }
+            return getStringInfo.GetSummary(storeLocations);
 
-            return summary.ToString();
+            //var summary = new StringBuilder();
+            //for (int i = 0; i < storeLocations.Count; i++)
+            //{
+            //    summary.AppendLine($"{storeLocations[i]}");
+            //}
+
+            //return summary.ToString();
         }
 
         public static async Task<List<string>> GetStoreLocations()
@@ -45,31 +54,7 @@ namespace Project1_App.App.RequestHttp
             Dictionary<string, string> query = new();
             string requestUri = QueryHelpers.AddQueryString("/api/StoreLocations", query);
 
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUri);
-            request.Headers.Accept.Add(new(MediaTypeNames.Application.Json));
-
-            HttpResponseMessage response;
-            try
-            {
-                response = await httpClient.SendAsync(request);
-            }
-            catch (HttpRequestException ex)
-            {
-                throw new UnexpectedServerBehaviorException("network error", ex);
-            }
-
-            response.EnsureSuccessStatusCode();
-            if (response.Content.Headers.ContentType?.MediaType != MediaTypeNames.Application.Json)
-            {
-                throw new UnexpectedServerBehaviorException();
-            }
-
-            var storeLocations = await response.Content.ReadFromJsonAsync<List<string>>();
-            if (storeLocations == null)
-            {
-                throw new UnexpectedServerBehaviorException();
-            }
-
+            var storeLocations = await getStringInfo.SendRequestHttp(requestUri);
             return storeLocations;
         }
     }

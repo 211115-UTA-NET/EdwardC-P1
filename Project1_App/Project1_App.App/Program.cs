@@ -36,6 +36,12 @@ namespace Project1_App.App
             Invoice invoice = new(myServer);
             ItemDetailsInfo itemDetailsInfo = new(myServer);
 
+            //Set for getStringInfo
+            StoreLocation.SetUp();
+            StoreInventory.SetUp();
+            Invoice.SetUp();
+            ItemDetailsInfo.SetUp();
+
             while (programRun)
             {
 

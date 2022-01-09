@@ -17,7 +17,6 @@ namespace Project1_App.App.RequestHttp
         private static GetStringInfo getStringInfo = null!;
         public Invoice(Uri serverUri)
         {
-            //httpClient.BaseAddress = serverUri;
             ServerUri = serverUri;
         }
         public static void SetUp()
@@ -27,7 +26,7 @@ namespace Project1_App.App.RequestHttp
 
         public async Task<string> DisplayInvoicesByStoreId(string num)
         {
-            SetUp();
+            //SetUp();
             List<string> invoices = new();
             try
             {
@@ -51,7 +50,7 @@ namespace Project1_App.App.RequestHttp
 
         public async Task<string> DisplayAllInvoices()
         {
-            SetUp();
+            //SetUp();
             List<string> invoices = new();
             try
             {
@@ -75,7 +74,7 @@ namespace Project1_App.App.RequestHttp
 
         public async Task<string> DisplayInvoicesByCustomerId(string num)
         {
-            SetUp();
+            //SetUp();
             List<string> invoices = new();
             try
             {
