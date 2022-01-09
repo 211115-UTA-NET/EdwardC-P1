@@ -12,16 +12,11 @@ namespace Project1_App.App.RequestHttp
 {
     public class Customer
     {
-        private static Uri? ServerUri;
         private static GetStringInfo getStringInfo = null!;
 
-        public Customer(Uri serverUri)
+        public static void SetUp(Uri myServer)
         {
-            ServerUri = serverUri;
-        }
-        public static void SetUp()
-        {
-            getStringInfo = new(ServerUri!);
+            getStringInfo = new(myServer);
         }
 
         public async Task<List<string>> SearchLoginInfo(List<string> inputs)

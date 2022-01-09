@@ -12,17 +12,11 @@ namespace Project1_App.App.RequestHttp
 {
     public class StoreInventory
     {
-        private static Uri? ServerUri;
         private static GetStringInfo getStringInfo = null!;
-        public StoreInventory(Uri? serverUri)
-        {
-            
-            ServerUri = serverUri;
-        }
 
-        public static void SetUp()
+        public static void SetUp(Uri myServer)
         {
-            getStringInfo = new(ServerUri!);
+            getStringInfo = new(myServer);
         }
 
         public async Task<string> DisplayStoreInventorysById(string num)

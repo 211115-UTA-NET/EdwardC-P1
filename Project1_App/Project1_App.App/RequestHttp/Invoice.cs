@@ -12,15 +12,11 @@ namespace Project1_App.App.RequestHttp
 {
     public class Invoice
     {
-        private static Uri? ServerUri;
         private static GetStringInfo getStringInfo = null!;
-        public Invoice(Uri serverUri)
+ 
+        public static void SetUp(Uri myServer)
         {
-            ServerUri = serverUri;
-        }
-        public static void SetUp()
-        {
-            getStringInfo = new(ServerUri!);
+            getStringInfo = new(myServer);
         }
 
         public async Task<string> DisplayInvoicesByStoreId(string num)

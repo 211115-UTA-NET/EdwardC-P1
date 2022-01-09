@@ -13,17 +13,11 @@ namespace Project1_App.App.RequestHttp
 
     public class StoreLocation
     {
-        public static readonly HttpClient httpClient = new();
-        private static Uri? ServerUri;
         private static GetStringInfo getStringInfo = null!;
 
-        public StoreLocation(Uri serverUri)
+        public static void SetUp(Uri myServer)
         {
-            ServerUri = serverUri;
-        }
-        public static void SetUp()
-        {
-            getStringInfo = new(ServerUri!);
+            getStringInfo = new(myServer);
         }
         public async Task<string> GetStoreLocation()
         {

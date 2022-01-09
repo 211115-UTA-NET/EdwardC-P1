@@ -30,18 +30,18 @@ namespace Project1_App.App
             Logout myLogout = new();
 
             // Http Request
-            Customer customer = new(myServer);
-            StoreLocation storeLocation = new(myServer);
-            StoreInventory storeInventory = new(myServer);
-            Invoice invoice = new(myServer);
-            ItemDetailsInfo itemDetailsInfo = new(myServer);
+            Customer customer = new();
+            StoreLocation storeLocation = new();
+            StoreInventory storeInventory = new();
+            Invoice invoice = new();
+            ItemDetailsInfo itemDetailsInfo = new();
 
             //Set for getStringInfo
-            Customer.SetUp();
-            StoreLocation.SetUp();
-            StoreInventory.SetUp();
-            Invoice.SetUp();
-            ItemDetailsInfo.SetUp();
+            Customer.SetUp(myServer);
+            StoreLocation.SetUp(myServer);
+            StoreInventory.SetUp(myServer);
+            Invoice.SetUp(myServer);
+            ItemDetailsInfo.SetUp(myServer);
 
             while (programRun)
             {
