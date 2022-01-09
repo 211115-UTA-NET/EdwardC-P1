@@ -13,7 +13,7 @@ namespace Project1_App.App
 {
     public class Login
     {
-        public async Task LoginScreen(Program myProgram, Customer customer)
+        public static async Task LoginScreen(Program myProgram, Customer customer)
         {
             string? input;
             bool TryAgain = true;

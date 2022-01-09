@@ -9,7 +9,7 @@ namespace Project1_App.App
 {
     public class CustomerRequest
     {
-        public async Task EnterCustomerScreen(Program myProgram, StoreLocation storeLocation, Invoice invoice, ItemDetailsInfo itemDetailsInfo)
+        public static async Task EnterCustomerScreen(Program myProgram, StoreLocation storeLocation, Invoice invoice, ItemDetailsInfo itemDetailsInfo)
         {
             bool TryAgain = false;
 

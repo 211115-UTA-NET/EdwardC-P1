@@ -9,7 +9,7 @@ namespace Project1_App.App
 {
     public class ManagerRequest
     {
-        public async Task EnterManagerScreen(Program myProgram, Customer customer, StoreLocation storeLocation,
+        public static async Task EnterManagerScreen(Program myProgram, Customer customer, StoreLocation storeLocation,
                                              StoreInventory storeInventory, Invoice invoice)
         {
             bool TryAgain = true;
@@ -25,7 +25,7 @@ namespace Project1_App.App
             while (TryAgain);
         }
 
-        public async Task<bool> GetUserInput(Program myProgram, StoreLocation storeLocation, StoreInventory storeInventory,
+        public static async Task<bool> GetUserInput(Program myProgram, StoreLocation storeLocation, StoreInventory storeInventory,
                                              Invoice invoice, Customer customer, string? input)
         {
             int userInput = 0;

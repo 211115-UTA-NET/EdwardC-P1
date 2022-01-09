@@ -22,13 +22,6 @@ namespace Project1_App.App
             //Uri myServer = new("https://211115bikeshop.azurewebsites.net");
             Uri myServer = new(await File.ReadAllTextAsync("C:/Users/rootb/Revature/Database_File/LocalHostP1.txt"));
 
-            // Call Class 
-            Login myLogin = new();
-            NewCustomer newCustomer = new();
-            CustomerRequest customerRequest = new();
-            ManagerRequest managerRequest = new();
-            Logout myLogout = new();
-
             // Http Request
             Customer customer = new();
             StoreLocation storeLocation = new();
@@ -53,23 +46,23 @@ namespace Project1_App.App
                         program.StoreId = 0;
                         Console.WriteLine("Welcome to Login");
                         Console.WriteLine("----------------");
-                        await myLogin.LoginScreen(program, customer);
+                        await Login.LoginScreen(program, customer);
                         break;
                     case Mode.NewCustomer:
                         Console.WriteLine("\nNew Customer's Sign up");
                         Console.WriteLine("----------------------");
-                        newCustomer.test();
+                        NewCustomer.test();
                         programRun = false;
                         break;
                     case Mode.CustomerRequest:
                         Console.WriteLine("\nCustomer Request");
                         Console.WriteLine("----------------");
-                        await customerRequest.EnterCustomerScreen(program, storeLocation, invoice, itemDetailsInfo);
+                        await CustomerRequest.EnterCustomerScreen(program, storeLocation, invoice, itemDetailsInfo);
                         break;
                     case Mode.ManagerRequest:
                         Console.WriteLine("\nManager Request");
                         Console.WriteLine("---------------");
-                        await managerRequest.EnterManagerScreen(program, customer, storeLocation, storeInventory, invoice);
+                        await ManagerRequest.EnterManagerScreen(program, customer, storeLocation, storeInventory, invoice);
                         break;
                     case Mode.SetOrder:
                         Console.WriteLine("\nSet Order");
@@ -79,7 +72,7 @@ namespace Project1_App.App
                     case Mode.Logout:
                         Console.WriteLine("\nLog out");
                         Console.WriteLine("-------");
-                        myLogout.EnterLogoutScreen(program);
+                        Logout.EnterLogoutScreen(program);
                         programRun = false;
                         break;
                     case Mode.Exit:

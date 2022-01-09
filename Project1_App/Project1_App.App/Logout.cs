@@ -8,7 +8,7 @@ namespace Project1_App.App
 {
     public class Logout
     {
-        public void EnterLogoutScreen(Program myProgram) // For Customer only
+        public static void EnterLogoutScreen(Program myProgram) // For Customer only
         {
             string? input;
             // prompt user to sign out or continue order other item

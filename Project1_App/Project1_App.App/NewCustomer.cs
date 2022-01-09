@@ -8,7 +8,7 @@ namespace Project1_App.App
 {
     public class NewCustomer
     {
-        public void test()
+        public static void test()
         {
             Console.WriteLine("Pass");
         }
