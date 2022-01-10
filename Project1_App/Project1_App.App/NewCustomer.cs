@@ -19,14 +19,11 @@ namespace Project1_App.App
             {
                 Console.WriteLine(getString(i));
                 input = getUserInput();
-                if (i == 4)
+                if (i == 4 && input?.Length >= 11)
                 {
-                    if (input?.Length >= 11)
-                    {
-                        Console.WriteLine("You enter more than 10 digit. Try again");
-                        input = null;
-                        i--;
-                    }
+                    Console.WriteLine("You enter more than 10 digit. Try again");
+                    input = null;
+                    i--;
                 }
                 if (input != null || input!.Length > 0)
                     inputs.Add(input);

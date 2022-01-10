@@ -85,7 +85,7 @@ namespace Project1_App.App.RequestHttp
                                                        ["Address"] = inputs[3], ["Username"] = inputs[4], ["Password"] = inputs[6] };
             string requestUri = QueryHelpers.AddQueryString("/api/Customers/Add", query);
 
-            var response = await ModifyInformation.SendRequestHttpPost(requestUri);
+            await ModifyInformation.SendRequestHttpPost(requestUri);
         }
     }
 }
