@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.WebUtilities;
+using Project1_App.App.Dtos;
 using Project1_App.App.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -81,11 +82,17 @@ namespace Project1_App.App.RequestHttp
 
         public static async Task AddCustomer(List<string> inputs)
         {
-            Dictionary<string, string> query = new() { ["FirstName"] = inputs[0], ["LastName"] = inputs[1], ["Phone"] = inputs[2], 
-                                                       ["Address"] = inputs[3], ["Username"] = inputs[4], ["Password"] = inputs[5] };
-            string requestUri = QueryHelpers.AddQueryString("/api/Customers/Add", query);
+            NewCustomerInfo Info = new()
+            {
+                FirstName = inputs[0],
+                LastName = inputs[1],
+                Phone = inputs[2],
+                Address = inputs[3],
+                Username = inputs[4],
+                Password = inputs[5]
+            };
 
-            await ModifyInformation.SendRequestHttpPost(requestUri);
+            await ModifyInformation.SendRequestHttpPost(Info);
         }
     }
 }

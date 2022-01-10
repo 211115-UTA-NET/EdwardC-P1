@@ -23,12 +23,13 @@ namespace Project1_Api.Api.Controllers
             return result;
         }
 
-        [HttpPost("/api/Customers/Add")]
-        public async Task AddNewCustomer([FromQuery] NewCustomer customer)
+        [HttpPost]
+        public async Task<ActionResult> AddNewCustomer([FromQuery] NewCustomer customer)
         {
             List<string> customerInfo = new() { customer.FirstName!, customer.LastName!, customer.Phone!,
                                                 customer.Address!, customer.Username!, customer.Password! };
             await _customerRepo.PostCustomer(customerInfo, false);
+            return Ok();
         }
     }
 }

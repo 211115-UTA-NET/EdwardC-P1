@@ -1,9 +1,11 @@
-﻿using Project1_App.App.Exceptions;
+﻿using Project1_App.App.Dtos;
+using Project1_App.App.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mime;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Project1_App.App.RequestHttp
@@ -16,10 +18,11 @@ namespace Project1_App.App.RequestHttp
             httpClient.BaseAddress = myServer;
         }
 
-        public static async Task<HttpResponseMessage> SendRequestHttpPost(string requestUri)
+        public static async Task SendRequestHttpPost(NewCustomerInfo Info)
         {
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUri);
-            request.Headers.Accept.Add(new(MediaTypeNames.Application.Json));
+            HttpRequestMessage request = new(HttpMethod.Post, "/api/Customers");
+            request.Content = new StringContent(JsonSerializer.Serialize(Info), 
+                Encoding.UTF8, MediaTypeNames.Application.Json);
 
             HttpResponseMessage response;
             try
@@ -36,7 +39,7 @@ namespace Project1_App.App.RequestHttp
             {
                 throw new UnexpectedServerBehaviorException();
             }
-            return response;
+            //return response;
         }
     }
 }
