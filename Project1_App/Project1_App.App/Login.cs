@@ -13,7 +13,7 @@ namespace Project1_App.App
 {
     public static class Login
     {
-        public static async Task LoginScreen(Program myProgram, Customer customer)
+        public static async Task LoginScreen(Program myProgram)
         {
             string? input;
             bool TryAgain = true;
@@ -22,13 +22,13 @@ namespace Project1_App.App
             {
                 Console.WriteLine("Please choose a number from menu:\n1. New Customer\n2. Returned Customer\n3. Exit");
                 input = Console.ReadLine();
-                TryAgain = await GetUserInput(myProgram, customer, input);
+                TryAgain = await GetUserInput(myProgram, input);
 
             }
             while (TryAgain);
         }
 
-        public static async Task<bool> GetUserInput(Program myProgram, Customer customer, string? input)
+        public static async Task<bool> GetUserInput(Program myProgram, string? input)
         {
             int userInput;
 
@@ -40,7 +40,7 @@ namespace Project1_App.App
                         myProgram.myMode = Program.Mode.NewCustomer;
                         return false;
                     case 2:
-                        await GetUsernamePassword(myProgram, customer);
+                        await GetUsernamePassword(myProgram);
                         return false;
                     case 3:
                         myProgram.myMode = Program.Mode.Exit;
@@ -57,7 +57,7 @@ namespace Project1_App.App
             }
         }
 
-        public static async Task GetUsernamePassword(Program myProgram, Customer customer)
+        public static async Task GetUsernamePassword(Program myProgram)
         {
             bool matching = false;
             bool IsManager = true;

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Project1_App.App.RequestHttp
 {
-    public class StoreInventory
+    public static class StoreInventory
     {
         private static GetStringInfo getStringInfo = null!;
 

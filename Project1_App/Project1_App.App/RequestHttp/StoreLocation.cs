@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Project1_App.App.RequestHttp
 {
 
-    public class StoreLocation
+    public static class StoreLocation
     {
         private static GetStringInfo getStringInfo = null!;
 

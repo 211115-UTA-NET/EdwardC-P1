@@ -22,13 +22,6 @@ namespace Project1_App.App
             //Uri myServer = new("https://211115bikeshop.azurewebsites.net");
             Uri myServer = new(await File.ReadAllTextAsync("C:/Users/rootb/Revature/Database_File/LocalHostP1.txt"));
 
-            // Http Request
-            Customer customer = new();
-            StoreLocation storeLocation = new();
-            StoreInventory storeInventory = new();
-            Invoice invoice = new();
-            ItemDetailsInfo itemDetailsInfo = new();
-
             //Set for getStringInfo
             Customer.SetUp(myServer);
             StoreLocation.SetUp(myServer);
@@ -46,7 +39,7 @@ namespace Project1_App.App
                         program.StoreId = 0;
                         Console.WriteLine("Welcome to Login");
                         Console.WriteLine("----------------");
-                        await Login.LoginScreen(program, customer);
+                        await Login.LoginScreen(program);
                         break;
                     case Mode.NewCustomer:
                         Console.WriteLine("\nNew Customer's Sign up");
@@ -57,12 +50,12 @@ namespace Project1_App.App
                     case Mode.CustomerRequest:
                         Console.WriteLine("\nCustomer Request");
                         Console.WriteLine("----------------");
-                        await CustomerRequest.EnterCustomerScreen(program, storeLocation, invoice, itemDetailsInfo);
+                        await CustomerRequest.EnterCustomerScreen(program);
                         break;
                     case Mode.ManagerRequest:
                         Console.WriteLine("\nManager Request");
                         Console.WriteLine("---------------");
-                        await ManagerRequest.EnterManagerScreen(program, customer, storeLocation, storeInventory, invoice);
+                        await ManagerRequest.EnterManagerScreen(program);
                         break;
                     case Mode.SetOrder:
                         Console.WriteLine("\nSet Order");

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Project1_App.App.RequestHttp
 {
-    public class Customer
+    public static class Customer
     {
         private static GetStringInfo getStringInfo = null!;
 

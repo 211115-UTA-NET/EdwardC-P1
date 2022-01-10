@@ -9,23 +9,23 @@ namespace Project1_App.App
 {
     public static class CustomerRequest
     {
-        public static async Task EnterCustomerScreen(Program myProgram, StoreLocation storeLocation, Invoice invoice, ItemDetailsInfo itemDetailsInfo)
+        public static async Task EnterCustomerScreen(Program myProgram)
         {
             bool TryAgain = false;
 
-            await ChooseStore(myProgram, storeLocation);
+            await ChooseStore(myProgram);
 
             do
             {
                 Console.WriteLine("\nPlease choose a number from menu:\n1. Check your order hisoty\n2. See item's information" +
                                   "\n3. Check store history\n4. Ready to order items\n5. Log out");
                 string? input = Console.ReadLine();
-                TryAgain = await getUserInput(myProgram, invoice, itemDetailsInfo, input);
+                TryAgain = await getUserInput(myProgram, input);
             }
             while (TryAgain);
         }
 
-        public static async Task ChooseStore(Program myProgram, StoreLocation storeLocation)
+        public static async Task ChooseStore(Program myProgram)
         {
             int num = 0;
             Console.WriteLine("Pick a location followed: ");
@@ -50,7 +50,7 @@ namespace Project1_App.App
             }
 
         }
-        public static async Task<bool> getUserInput(Program myProgram, Invoice invoice, ItemDetailsInfo itemDetailsInfo, string? input)
+        public static async Task<bool> getUserInput(Program myProgram, string? input)
         {
             int userInput = 0;
             if (int.TryParse(input, out userInput))
