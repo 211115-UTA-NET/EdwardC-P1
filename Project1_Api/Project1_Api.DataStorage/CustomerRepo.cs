@@ -31,5 +31,32 @@ namespace Project1_Api.DataStorage
                 return await reader.ReadAsync();
             }
         }
+
+        public async Task PostCustomer(List<string> customerInfo)
+        {
+            using SqlConnection connection = new(_connectionString);
+
+            // Add to Customer Table
+            await connection.OpenAsync();
+            using SqlCommand command = new(
+                $"INSERT INTO Customers (FirstName, LastName, PhoneNumber, \"Address\") VALUES (@firstName, @lastName, @phoneNumber, @Address);",
+                connection);
+            command.Parameters.AddWithValue("@firstName", customerInfo[0]);
+            command.Parameters.AddWithValue("@lastName", customerInfo[1]);
+            command.Parameters.AddWithValue("@phoneNumber", customerInfo[2]);
+            command.Parameters.AddWithValue("@Address", customerInfo[3]);
+            command.ExecuteNonQuery();
+            connection.Close();
+
+            // Add to Login Table
+            await connection.OpenAsync();
+            using SqlCommand command2 = new(
+                $"INSERT INTO \"Login\" (Username, \"Password\", IsManager) VALUES (@Username, @Password, 0);",
+                connection);
+            command2.Parameters.AddWithValue("@Username", customerInfo[4]);
+            command2.Parameters.AddWithValue("@Password", customerInfo[5]);
+            command2.ExecuteNonQuery();
+            connection.Close();
+        }
     }
 }

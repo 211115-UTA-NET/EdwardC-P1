@@ -9,5 +9,7 @@ namespace Project1_Api.DataStorage
     public interface ICustomerRepo
     {
         Task<bool> GetCustomerByName(string Name);
+
+        Task PostCustomer(List<string> customerInfo);
     }
 }
