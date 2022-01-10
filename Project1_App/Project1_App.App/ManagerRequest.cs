@@ -66,7 +66,7 @@ namespace Project1_App.App
             do
             {
                 Console.WriteLine("\nInventory\nChoose a store location");
-                Console.Write(await storeLocation.GetStoreLocation());
+                Console.Write(await StoreLocation.GetStoreLocation());
                 Console.WriteLine("4. All of the adove.");
                 input = Console.ReadLine();
 
@@ -85,16 +85,16 @@ namespace Project1_App.App
                 switch (userInput)
                 {
                     case 1:
-                        Console.WriteLine(await storeInventory.DisplayStoreInventorysById("1"));
+                        Console.WriteLine(await StoreInventory.DisplayStoreInventorysById("1"));
                         return false;
                     case 2:
-                        Console.WriteLine(await storeInventory.DisplayStoreInventorysById("2"));
+                        Console.WriteLine(await StoreInventory.DisplayStoreInventorysById("2"));
                         return false;
                     case 3:
-                        Console.WriteLine(await storeInventory.DisplayStoreInventorysById("3"));
+                        Console.WriteLine(await StoreInventory.DisplayStoreInventorysById("3"));
                         return false;
                     case 4:
-                        Console.WriteLine(await storeInventory.DisplayAllStoreInventorys());
+                        Console.WriteLine(await StoreInventory.DisplayAllStoreInventorys());
                         return false;
                     default:
                         Console.WriteLine("Your input is invalid: Value is not matching on any menu. Please try again");
@@ -117,7 +117,7 @@ namespace Project1_App.App
             do
             {
                 Console.WriteLine("\nInvoices:\nChoose a store location");
-                Console.Write(await storeLocation.GetStoreLocation());
+                Console.Write(await StoreLocation.GetStoreLocation());
                 Console.WriteLine("4. All of the adove.");
                 input = Console.ReadLine();
 
@@ -134,16 +134,16 @@ namespace Project1_App.App
                 switch (userInput)
                 {
                     case 1:
-                        Console.WriteLine(await invoice.DisplayInvoicesByStoreId("1"));
+                        Console.WriteLine(await Invoice.DisplayInvoicesByStoreId("1"));
                         return false;
                     case 2:
-                        Console.WriteLine(await invoice.DisplayInvoicesByStoreId("2"));
+                        Console.WriteLine(await Invoice.DisplayInvoicesByStoreId("2"));
                         return false;
                     case 3:
-                        Console.WriteLine(await invoice.DisplayInvoicesByStoreId("3"));
+                        Console.WriteLine(await Invoice.DisplayInvoicesByStoreId("3"));
                         return false;
                     case 4:
-                        Console.WriteLine(await invoice.DisplayAllInvoices());
+                        Console.WriteLine(await Invoice.DisplayAllInvoices());
                         return false;
                     default:
                         Console.WriteLine("Your input is invalid: Value is not matching any number from menu. Please try again");
@@ -192,10 +192,10 @@ namespace Project1_App.App
                 switch (userInput)
                 {
                     case 1:
-                        Console.WriteLine(await customer.FindCustomerName(input, name));
+                        Console.WriteLine(await Customer.FindCustomerName(input, name));
                         return false;
                     case 2:
-                        Console.WriteLine(await customer.FindCustomerName(input, name));
+                        Console.WriteLine(await Customer.FindCustomerName(input, name));
                         return false;
                     default:
                         Console.WriteLine("Your input is invalid: Value is not matching any number from menu. Please try again");

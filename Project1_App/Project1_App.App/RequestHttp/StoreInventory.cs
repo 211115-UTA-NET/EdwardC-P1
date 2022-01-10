@@ -19,7 +19,7 @@ namespace Project1_App.App.RequestHttp
             getStringInfo = new(myServer);
         }
 
-        public async Task<string> DisplayStoreInventorysById(string num)
+        public static async Task<string> DisplayStoreInventorysById(string num)
         {
             List<string> storeInventorys = new();
             try
@@ -34,7 +34,7 @@ namespace Project1_App.App.RequestHttp
             return getStringInfo.GetSummary(storeInventorys);
         }
 
-        public async Task<List<string>> RetrieveStoreInventoryById(string? num)
+        public static async Task<List<string>> RetrieveStoreInventoryById(string? num)
         {
             Dictionary<string, string> query = new() { ["Id"] = num! };
             string requestUri = QueryHelpers.AddQueryString("/api/StoreInventorys/Id", query);
@@ -48,7 +48,7 @@ namespace Project1_App.App.RequestHttp
             return results;
         }
 
-        public async Task<string> DisplayAllStoreInventorys()
+        public static async Task<string> DisplayAllStoreInventorys()
         {
             List<string> storeInventorys = new();
             try
@@ -62,7 +62,7 @@ namespace Project1_App.App.RequestHttp
             return getStringInfo.GetSummary(storeInventorys);
         }
 
-        public async Task<List<string>> RetrieveAllStoreInventory()
+        public static async Task<List<string>> RetrieveAllStoreInventory()
         {
             Dictionary<string, string> query = new();
             string requestUri = QueryHelpers.AddQueryString("/api/StoreInventorys", query);

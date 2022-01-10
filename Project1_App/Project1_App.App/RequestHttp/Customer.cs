@@ -19,7 +19,7 @@ namespace Project1_App.App.RequestHttp
             getStringInfo = new(myServer);
         }
 
-        public async Task<List<string>> SearchLoginInfo(List<string> inputs)
+        public static async Task<List<string>> SearchLoginInfo(List<string> inputs)
         {
             List<string> loginInfo = new();
             try
@@ -48,7 +48,7 @@ namespace Project1_App.App.RequestHttp
             return results;
         }
 
-        public async Task<string> FindCustomerName(string? input, string? name)
+        public static async Task<string> FindCustomerName(string? input, string? name)
         {
             bool isFound = false;
             try

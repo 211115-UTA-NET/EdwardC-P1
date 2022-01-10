@@ -19,7 +19,7 @@ namespace Project1_App.App.RequestHttp
             getStringInfo = new(myServer);
         }
 
-        public async Task<string> DisplayInvoicesByStoreId(string num)
+        public static async Task<string> DisplayInvoicesByStoreId(string num)
         {
             List<string> invoices = new();
             try
@@ -33,7 +33,7 @@ namespace Project1_App.App.RequestHttp
             return getStringInfo.GetSummary(invoices);
         }
 
-        public async Task<List<string>> RetrieveInvoicesByStoreId(string num)
+        public static async Task<List<string>> RetrieveInvoicesByStoreId(string num)
         {
             Dictionary<string, string> query = new() { ["storeId"] = num! };
             string requestUri = QueryHelpers.AddQueryString("/api/Invoices/StoreId", query);
@@ -47,7 +47,7 @@ namespace Project1_App.App.RequestHttp
             return results;
         }
 
-        public async Task<string> DisplayAllInvoices()
+        public static async Task<string> DisplayAllInvoices()
         {
             List<string> invoices = new();
             try
@@ -61,7 +61,7 @@ namespace Project1_App.App.RequestHttp
             return getStringInfo.GetSummary(invoices);
         }
 
-        public async Task<List<string>> RetrieveAllInvoices()
+        public static async Task<List<string>> RetrieveAllInvoices()
         {
             Dictionary<string, string> query = new();
             string requestUri = QueryHelpers.AddQueryString("/api/Invoices", query);
@@ -75,7 +75,7 @@ namespace Project1_App.App.RequestHttp
             return results;
         }
 
-        public async Task<string> DisplayInvoicesByCustomerId(string num)
+        public static async Task<string> DisplayInvoicesByCustomerId(string num)
         {
             List<string> invoices = new();
             try
@@ -89,7 +89,7 @@ namespace Project1_App.App.RequestHttp
             return getStringInfo.GetSummary(invoices);
         }
 
-        public async Task<List<string>> RetrieveInvoicesByCustomerId(string num)
+        public static async Task<List<string>> RetrieveInvoicesByCustomerId(string num)
         {
             Dictionary<string, string> query = new() { ["customerId"] = num! };
             string requestUri = QueryHelpers.AddQueryString("/api/Invoices/CustomerId", query);

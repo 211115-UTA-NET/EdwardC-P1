@@ -19,7 +19,7 @@ namespace Project1_App.App.RequestHttp
             getStringInfo = new(myServer);
         }
 
-        public async Task<string> DisplayItems()
+        public static async Task<string> DisplayItems()
         {
             List<string> itemDetails = new();
             try

@@ -32,7 +32,7 @@ namespace Project1_App.App
 
             while (true)
             {
-                Console.Write(await storeLocation.GetStoreLocation());
+                Console.Write(await StoreLocation.GetStoreLocation());
                 if (int.TryParse(Console.ReadLine(), out num))
                 {
                     if (0 < num && num < 4)
@@ -59,15 +59,15 @@ namespace Project1_App.App
                 {
                     case 1:
                         Console.Write("\nYour Invoices");
-                        Console.Write(await invoice.DisplayInvoicesByCustomerId(myProgram.CustomerId.ToString()));
+                        Console.Write(await Invoice.DisplayInvoicesByCustomerId(myProgram.CustomerId.ToString()));
                         break;
                     case 2:
                         Console.Write("\nItem's Detail:");
-                        Console.Write(await itemDetailsInfo.DisplayItems());
+                        Console.Write(await ItemDetailsInfo.DisplayItems());
                         break;
                     case 3:
                         Console.Write("\nStore's Invoices:");
-                        Console.Write(await invoice.DisplayInvoicesByStoreId(myProgram.StoreId.ToString()));
+                        Console.Write(await Invoice.DisplayInvoicesByStoreId(myProgram.StoreId.ToString()));
                         break;
                     case 4:
                         myProgram.myMode = Program.Mode.SetOrder;

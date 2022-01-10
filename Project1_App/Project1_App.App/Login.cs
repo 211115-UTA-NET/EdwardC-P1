@@ -77,7 +77,7 @@ namespace Project1_App.App
                 Console.Write("Enter your password: ");
                 inputs.Add(Console.ReadLine());
 
-                List<string> result = await customer.SearchLoginInfo(inputs!);
+                List<string> result = await Customer.SearchLoginInfo(inputs!);
                 matching = GetMatching(myProgram, result, ref IsManager);
                 if (matching)
                 {

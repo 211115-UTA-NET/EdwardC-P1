@@ -19,7 +19,7 @@ namespace Project1_App.App.RequestHttp
         {
             getStringInfo = new(myServer);
         }
-        public async Task<string> GetStoreLocation()
+        public static async Task<string> GetStoreLocation()
         {
             List<string> storeLocations = new();
             try
