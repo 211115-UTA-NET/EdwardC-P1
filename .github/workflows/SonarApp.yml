@@ -3,7 +3,7 @@ name: Sonar Analysis
 on:
   push:
     branches:
-      [ main ]
+      - main 
 
 jobs:
 
@@ -46,8 +46,6 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 6.0.x
-      - name: Test
-        run: dotnet test --blame --no-restore --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=opencover.xml
           
       - name: Build and analyze
         env:
