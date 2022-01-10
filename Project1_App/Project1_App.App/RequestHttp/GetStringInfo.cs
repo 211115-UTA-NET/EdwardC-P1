@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Project1_App.App.RequestHttp
 {
-    public class GetStringInfo
+    public static class GetStringInfo
     {
         public static readonly HttpClient httpClient = new();
-        public GetStringInfo(Uri myServer)
+        public static void getStringInfo(Uri myServer)
         {
             httpClient.BaseAddress = myServer;
         }

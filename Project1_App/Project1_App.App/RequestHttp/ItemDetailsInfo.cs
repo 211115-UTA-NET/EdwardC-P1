@@ -12,13 +12,6 @@ namespace Project1_App.App.RequestHttp
 {
     public static class ItemDetailsInfo
     {
-        private static GetStringInfo getStringInfo = null!;
-
-        public static void SetUp(Uri myServer)
-        {
-            getStringInfo = new(myServer);
-        }
-
         public static async Task<string> DisplayItems()
         {
             List<string> itemDetails = new();

@@ -23,11 +23,7 @@ namespace Project1_App.App
             Uri myServer = new(await File.ReadAllTextAsync("C:/Users/rootb/Revature/Database_File/LocalHostP1.txt"));
 
             //Set for getStringInfo
-            Customer.SetUp(myServer);
-            StoreLocation.SetUp(myServer);
-            StoreInventory.SetUp(myServer);
-            Invoice.SetUp(myServer);
-            ItemDetailsInfo.SetUp(myServer);
+            GetStringInfo.getStringInfo(myServer);
 
             while (programRun)
             {

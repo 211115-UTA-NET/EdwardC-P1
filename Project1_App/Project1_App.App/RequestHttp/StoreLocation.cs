@@ -13,12 +13,6 @@ namespace Project1_App.App.RequestHttp
 
     public static class StoreLocation
     {
-        private static GetStringInfo getStringInfo = null!;
-
-        public static void SetUp(Uri myServer)
-        {
-            getStringInfo = new(myServer);
-        }
         public static async Task<string> GetStoreLocation()
         {
             List<string> storeLocations = new();

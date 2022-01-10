@@ -12,13 +12,6 @@ namespace Project1_App.App.RequestHttp
 {
     public static class Customer
     {
-        private static GetStringInfo getStringInfo = null!;
-
-        public static void SetUp(Uri myServer)
-        {
-            getStringInfo = new(myServer);
-        }
-
         public static async Task<List<string>> SearchLoginInfo(List<string> inputs)
         {
             List<string> loginInfo = new();
