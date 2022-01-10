@@ -20,11 +20,9 @@ namespace Project1_App.Tests
         {
             // Arrange
             Program program = new Program();
-            Customer customer = new(myServer);
-            Login myLogin = new();
 
             // Act
-            bool result = await myLogin.GetUserInput(program, customer, input);
+            bool result = await Login.GetUserInput(program, input);
 
             // Assign
             Assert.False(result);
@@ -37,11 +35,9 @@ namespace Project1_App.Tests
         {
             // Arrange
             Program program = new Program();
-            Customer customer = new(myServer);
-            Login myLogin = new();
 
             // Act
-            bool result = await myLogin.GetUserInput(program, customer, input);
+            bool result = await Login.GetUserInput(program, input);
 
             // Assign
             Assert.True(result);
@@ -54,10 +50,9 @@ namespace Project1_App.Tests
         {
             // Arrange 
             Program program = new();
-            Login login = new();
 
             // Act
-            Program.Mode mode = login.ChangeMode(program, IsManager);
+            Program.Mode mode = Login.ChangeMode(program, IsManager);
 
             // Assign
             if (IsManager)
@@ -76,14 +71,13 @@ namespace Project1_App.Tests
         {
             // Arrange
             Program program = new();
-            Login login = new();
             List<string> inputs = new();
             bool temp = false;
             if(input1 != null && input2 != null)
                 inputs = new() { input1!, input2! };
 
             // Act
-            bool matching = login.GetMatching(program, inputs, ref temp);
+            bool matching = Login.GetMatching(program, inputs, ref temp);
 
             // Assign
             if(inputs == null || inputs.Count == 0)
