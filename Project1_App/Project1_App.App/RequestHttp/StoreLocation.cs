@@ -31,7 +31,7 @@ namespace Project1_App.App.RequestHttp
                 Console.WriteLine("Fatal error, can't properly connect to server");
             }
 
-            return getStringInfo.GetSummary(storeLocations);
+            return GetStringInfo.GetSummary(storeLocations);
         }
 
         public static async Task<List<string>> GetStoreLocations()
@@ -39,7 +39,7 @@ namespace Project1_App.App.RequestHttp
             Dictionary<string, string> query = new();
             string requestUri = QueryHelpers.AddQueryString("/api/StoreLocations", query);
 
-            var response = await getStringInfo.SendRequestHttp(requestUri);
+            var response = await GetStringInfo.SendRequestHttp(requestUri);
             var results = await response.Content.ReadFromJsonAsync<List<string>>();
             if (results == null)
             {

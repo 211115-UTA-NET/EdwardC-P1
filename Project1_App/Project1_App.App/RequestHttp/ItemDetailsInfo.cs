@@ -30,7 +30,7 @@ namespace Project1_App.App.RequestHttp
             {
                 Console.WriteLine("Fatal error, can't properly connect to server");
             }
-            return getStringInfo.GetSummary(itemDetails);
+            return GetStringInfo.GetSummary(itemDetails);
             
         }
 
@@ -42,7 +42,7 @@ namespace Project1_App.App.RequestHttp
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUri);
             request.Headers.Accept.Add(new(MediaTypeNames.Application.Json));
 
-            var response = await getStringInfo.SendRequestHttp(requestUri);
+            var response = await GetStringInfo.SendRequestHttp(requestUri);
             var results = await response.Content.ReadFromJsonAsync<List<string>>();
             if (results == null)
             {

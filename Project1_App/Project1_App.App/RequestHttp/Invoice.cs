@@ -30,7 +30,7 @@ namespace Project1_App.App.RequestHttp
             {
                 Console.WriteLine("Fatal error, can't properly connect to server");
             }
-            return getStringInfo.GetSummary(invoices);
+            return GetStringInfo.GetSummary(invoices);
         }
 
         public static async Task<List<string>> RetrieveInvoicesByStoreId(string num)
@@ -38,7 +38,7 @@ namespace Project1_App.App.RequestHttp
             Dictionary<string, string> query = new() { ["storeId"] = num! };
             string requestUri = QueryHelpers.AddQueryString("/api/Invoices/StoreId", query);
 
-            var response = await getStringInfo.SendRequestHttp(requestUri);
+            var response = await GetStringInfo.SendRequestHttp(requestUri);
             var results = await response.Content.ReadFromJsonAsync<List<string>>();
             if (results == null)
             {
@@ -58,7 +58,7 @@ namespace Project1_App.App.RequestHttp
             {
                 Console.WriteLine("Fatal error, can't properly connect to server");
             }
-            return getStringInfo.GetSummary(invoices);
+            return GetStringInfo.GetSummary(invoices);
         }
 
         public static async Task<List<string>> RetrieveAllInvoices()
@@ -66,7 +66,7 @@ namespace Project1_App.App.RequestHttp
             Dictionary<string, string> query = new();
             string requestUri = QueryHelpers.AddQueryString("/api/Invoices", query);
 
-            var response = await getStringInfo.SendRequestHttp(requestUri);
+            var response = await GetStringInfo.SendRequestHttp(requestUri);
             var results = await response.Content.ReadFromJsonAsync<List<string>>();
             if (results == null)
             {
@@ -86,7 +86,7 @@ namespace Project1_App.App.RequestHttp
             {
                 Console.WriteLine("Fatal error, can't properly connect to server");
             }
-            return getStringInfo.GetSummary(invoices);
+            return GetStringInfo.GetSummary(invoices);
         }
 
         public static async Task<List<string>> RetrieveInvoicesByCustomerId(string num)
@@ -94,7 +94,7 @@ namespace Project1_App.App.RequestHttp
             Dictionary<string, string> query = new() { ["customerId"] = num! };
             string requestUri = QueryHelpers.AddQueryString("/api/Invoices/CustomerId", query);
 
-            var response = await getStringInfo.SendRequestHttp(requestUri);
+            var response = await GetStringInfo.SendRequestHttp(requestUri);
             var results = await response.Content.ReadFromJsonAsync<List<string>>();
             if (results == null)
             {

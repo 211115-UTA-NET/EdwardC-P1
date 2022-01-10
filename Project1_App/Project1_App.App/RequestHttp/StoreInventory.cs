@@ -31,7 +31,7 @@ namespace Project1_App.App.RequestHttp
                 Console.WriteLine("Fatal error, can't properly connect to server");
             }
 
-            return getStringInfo.GetSummary(storeInventorys);
+            return GetStringInfo.GetSummary(storeInventorys);
         }
 
         public static async Task<List<string>> RetrieveStoreInventoryById(string? num)
@@ -39,7 +39,7 @@ namespace Project1_App.App.RequestHttp
             Dictionary<string, string> query = new() { ["Id"] = num! };
             string requestUri = QueryHelpers.AddQueryString("/api/StoreInventorys/Id", query);
 
-            var response = await getStringInfo.SendRequestHttp(requestUri);
+            var response = await GetStringInfo.SendRequestHttp(requestUri);
             var results = await response.Content.ReadFromJsonAsync<List<string>>();
             if (results == null)
             {
@@ -59,7 +59,7 @@ namespace Project1_App.App.RequestHttp
             {
                 Console.WriteLine("Fatal error, can't properly connect to server");
             }
-            return getStringInfo.GetSummary(storeInventorys);
+            return GetStringInfo.GetSummary(storeInventorys);
         }
 
         public static async Task<List<string>> RetrieveAllStoreInventory()
@@ -67,7 +67,7 @@ namespace Project1_App.App.RequestHttp
             Dictionary<string, string> query = new();
             string requestUri = QueryHelpers.AddQueryString("/api/StoreInventorys", query);
 
-            var response = await getStringInfo.SendRequestHttp(requestUri);
+            var response = await GetStringInfo.SendRequestHttp(requestUri);
             var results = await response.Content.ReadFromJsonAsync<List<string>>();
             if (results == null)
             {

@@ -39,7 +39,7 @@ namespace Project1_App.App.RequestHttp
             Dictionary<string, string> query = new() { ["Username"] = inputs[0]!.ToString(), ["Password"] = inputs[1]!.ToString() };
             string requestUri = QueryHelpers.AddQueryString("/api/Logins", query);
 
-            var response = await getStringInfo.SendRequestHttp(requestUri);
+            var response = await GetStringInfo.SendRequestHttp(requestUri);
             var results = await response.Content.ReadFromJsonAsync<List<string>>();
             if (results == null)
             {
@@ -81,7 +81,7 @@ namespace Project1_App.App.RequestHttp
             Dictionary<string, string> query = new() { ["Name"] = name! };
             string requestUri = QueryHelpers.AddQueryString("/api/Customers/Name", query);
             
-            var response = await getStringInfo.SendRequestHttp(requestUri);
+            var response = await GetStringInfo.SendRequestHttp(requestUri);
             var isFound = await response.Content.ReadFromJsonAsync<bool>();
             return isFound;
         }

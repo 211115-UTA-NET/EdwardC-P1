@@ -17,7 +17,7 @@ namespace Project1_App.App.RequestHttp
             httpClient.BaseAddress = myServer;
         }
 
-        public string GetSummary(List<string> results)
+        public  static string GetSummary(List<string> results)
         {
             var summary = new StringBuilder();
             summary.AppendLine("\n------------------\n");
@@ -29,7 +29,7 @@ namespace Project1_App.App.RequestHttp
             summary.AppendLine("------------------");
             return summary.ToString();
         }
-        public async Task<HttpResponseMessage> SendRequestHttp(string requestUri)
+        public static async Task<HttpResponseMessage> SendRequestHttp(string requestUri)
         {
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, requestUri);
             request.Headers.Accept.Add(new(MediaTypeNames.Application.Json));
