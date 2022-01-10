@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project1_App.App
 {
-    public class NewCustomer
+    public static class NewCustomer
     {
         public static void test()
         {

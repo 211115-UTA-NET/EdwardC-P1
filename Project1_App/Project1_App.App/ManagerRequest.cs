@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Project1_App.App
 {
-    public class ManagerRequest
+    public static class ManagerRequest
     {
         public static async Task EnterManagerScreen(Program myProgram, Customer customer, StoreLocation storeLocation,
                                              StoreInventory storeInventory, Invoice invoice)

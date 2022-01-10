@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Project1_App.App
 {
-    public class Login
+    public static class Login
     {
         public static async Task LoginScreen(Program myProgram, Customer customer)
         {

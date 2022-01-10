@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project1_App.App
 {
-    public class Logout
+    public static class Logout
     {
         public static void EnterLogoutScreen(Program myProgram) // For Customer only
         {
