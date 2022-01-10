@@ -24,6 +24,7 @@ namespace Project1_App.App
 
             //Set for getStringInfo
             GetStringInfo.getStringInfo(myServer);
+            ModifyInformation.getStringInfo(myServer);
 
             while (programRun)
             {

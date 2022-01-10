@@ -82,7 +82,7 @@ namespace Project1_App.App.RequestHttp
         public static async Task AddCustomer(List<string> inputs)
         {
             Dictionary<string, string> query = new() { ["FirstName"] = inputs[0], ["LastName"] = inputs[1], ["Phone"] = inputs[2], 
-                                                       ["Address"] = inputs[3], ["Username"] = inputs[4], ["Password"] = inputs[6] };
+                                                       ["Address"] = inputs[3], ["Username"] = inputs[4], ["Password"] = inputs[5] };
             string requestUri = QueryHelpers.AddQueryString("/api/Customers/Add", query);
 
             await ModifyInformation.SendRequestHttpPost(requestUri);
