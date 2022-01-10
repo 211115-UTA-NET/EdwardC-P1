@@ -32,7 +32,7 @@ namespace Project1_Api.DataStorage
             }
         }
 
-        public async Task PostCustomer(List<string> customerInfo)
+        public async Task PostCustomer(List<string> customerInfo, bool IsManager)
         {
             using SqlConnection connection = new(_connectionString);
 
@@ -51,10 +51,11 @@ namespace Project1_Api.DataStorage
             // Add to Login Table
             await connection.OpenAsync();
             using SqlCommand command2 = new(
-                $"INSERT INTO \"Login\" (Username, \"Password\", IsManager) VALUES (@Username, @Password, 0);",
+                $"INSERT INTO \"Login\" (Username, \"Password\", IsManager) VALUES (@Username, @Password, @isManager);",
                 connection);
             command2.Parameters.AddWithValue("@Username", customerInfo[4]);
             command2.Parameters.AddWithValue("@Password", customerInfo[5]);
+            command2.Parameters.AddWithValue("@isManager", IsManager);
             command2.ExecuteNonQuery();
             connection.Close();
         }

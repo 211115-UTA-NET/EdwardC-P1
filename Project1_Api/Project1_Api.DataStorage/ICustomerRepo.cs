@@ -10,6 +10,6 @@ namespace Project1_Api.DataStorage
     {
         Task<bool> GetCustomerByName(string Name);
 
-        Task PostCustomer(List<string> customerInfo);
+        Task PostCustomer(List<string> customerInfo, bool IsManager);
     }
 }

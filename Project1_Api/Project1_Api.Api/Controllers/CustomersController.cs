@@ -28,7 +28,7 @@ namespace Project1_Api.Api.Controllers
         {
             List<string> customerInfo = new() { customer.FirstName!, customer.LastName!, customer.Phone!,
                                                 customer.Address!, customer.Username!, customer.Password! };
-            await _customerRepo.PostCustomer(customerInfo);
+            await _customerRepo.PostCustomer(customerInfo, false);
         }
     }
 }
