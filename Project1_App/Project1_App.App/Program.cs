@@ -40,7 +40,7 @@ namespace Project1_App.App
                     case Mode.NewCustomer:
                         Console.WriteLine("\nNew Customer's Sign up");
                         Console.WriteLine("----------------------");
-                        NewCustomer.test();
+                        await NewCustomer.EnterNewCustomerScreen(program);
                         programRun = false;
                         break;
                     case Mode.CustomerRequest:

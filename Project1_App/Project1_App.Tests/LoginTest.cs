@@ -10,7 +10,6 @@ namespace Project1_App.Tests
 {
     public class LoginTest
     {
-        Uri myServer = new(File.ReadAllText("C:/Users/rootb/Revature/Database_File/LocalHostP1.txt"));
 
         // Skip "2" due to call other method with console.Readline()
         [Theory]
