@@ -42,7 +42,6 @@ namespace Project1_App.App
                         Console.WriteLine("\nNew Customer's Sign up");
                         Console.WriteLine("----------------------");
                         await NewCustomer.EnterNewCustomerScreen(program);
-                        programRun = false;
                         break;
                     case Mode.CustomerRequest:
                         Console.WriteLine("\nCustomer Request");

@@ -82,16 +82,14 @@ namespace Project1_App.App.RequestHttp
 
         public static async Task AddCustomer(List<string> inputs)
         {
-            NewCustomerInfo Info = new()
-            {
-                FirstName = inputs[0],
-                LastName = inputs[1],
-                Phone = inputs[2],
-                Address = inputs[3],
-                Username = inputs[4],
-                Password = inputs[5]
-            };
-
+            NewCustomerInfo Info = new();
+            Info.FirstName = inputs[0];
+            Info.LastName = inputs[1];
+            Info.Phone = inputs[2];
+            Info.Address = inputs[3];
+            Info.Username = inputs[4];
+            Info.Password = inputs[5];
+            
             await ModifyInformation.SendRequestHttpPost(Info);
         }
     }

@@ -32,7 +32,7 @@ namespace Project1_Api.DataStorage
             }
         }
 
-        public async Task PostCustomer(List<string> customerInfo, bool IsManager)
+        public async Task PostCustomer(List<string> customerInfo, int IsManager)
         {
             using SqlConnection connection = new(_connectionString);
 
