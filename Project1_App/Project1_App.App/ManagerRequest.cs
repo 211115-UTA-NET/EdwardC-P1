@@ -64,7 +64,7 @@ namespace Project1_App.App
             do
             {
                 Console.WriteLine("\nInventory\nChoose a store location");
-                Console.Write(await StoreLocation.GetStoreLocation());
+                Console.Write(await StoreLocation.DisplayStoreLocation());
                 Console.WriteLine("4. All of the adove.");
                 input = Console.ReadLine();
 
@@ -115,7 +115,7 @@ namespace Project1_App.App
             do
             {
                 Console.WriteLine("\nInvoices:\nChoose a store location");
-                Console.Write(await StoreLocation.GetStoreLocation());
+                Console.Write(await StoreLocation.DisplayStoreLocation());
                 Console.WriteLine("4. All of the adove.");
                 input = Console.ReadLine();
 

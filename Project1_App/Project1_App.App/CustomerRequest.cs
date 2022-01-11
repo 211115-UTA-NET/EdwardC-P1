@@ -32,7 +32,7 @@ namespace Project1_App.App
 
             while (true)
             {
-                Console.Write(await StoreLocation.GetStoreLocation());
+                Console.Write(await StoreLocation.DisplayStoreLocation());
                 if (int.TryParse(Console.ReadLine(), out num))
                 {
                     if (0 < num && num < 4)

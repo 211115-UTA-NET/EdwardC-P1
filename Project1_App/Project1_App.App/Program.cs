@@ -56,6 +56,7 @@ namespace Project1_App.App
                     case Mode.SetOrder:
                         Console.WriteLine("\nSet Order");
                         Console.WriteLine("---------");
+                        await SetOrder.EnterSetOrder(program);
                         programRun = false;
                         break;
                     case Mode.Logout:
