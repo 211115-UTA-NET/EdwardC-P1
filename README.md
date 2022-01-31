@@ -1,6 +1,6 @@
 # EdwardC-P1
 # Project Description #
-My project talk about Bike Store that sell various bike parts. Therefore, my target audience is any age from children to adult who love to ride bike. Even cycle biker, road biker, and Mountain Biker too. Even this will benefit to Store owner to manger their store more manageable. This app have access with Azure Database, where you will store various informations includes ivoices of customer order or store invoices.
+This application is designed for use by a retail store employee to record incoming orders of different products. The logic and data are managed in a RESTful HTTP service, while the user interface is a console application. The user can examine customer information, searchable by name, and examine the sortable order history, including orders to specific locations and by specific customers. Orders are validated and store inventory is tracked as orders are fulfilled or rejected.
 # Technologies Used #
 * C#
 * ASP.NET Core Web API
