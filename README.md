@@ -38,4 +38,4 @@ Make sure that you have
 
 ## License
 
-This project uses the following license: [<LICENSE.md>](<link>).
+This project uses the following license: [<LICENSE.md>](<LICENSE.md>).
