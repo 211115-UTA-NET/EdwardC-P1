@@ -15,6 +15,7 @@ List of Features ready and TODOs for future development
 * For Manager, Search Customer Name by first name or last name
 * For Manager, Check Store Inventory by choose a location or all of the locations
 * For Manager, Check Store Invoice by choose a location or all of the locations
+
 To-do list: (Mainly Customer)
 * Set Order
 * Process Order
