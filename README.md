@@ -31,7 +31,6 @@ Make sure that you have
 1. Pick a location in your file explorer to clone this repository
 2. Open Git Bash and change directory(cd) to the desired location
 3. Use this command to clone: git clone https://github.com/211115-UTA-NET/EdwardC-P1
-4. That is it.
 
 ## Usage
 
